@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %title
+  %body
+    .navbar.navbar-inverse.navbar-fixed-top
+      %a#slide_button.toggle-nav.navbar-brand.glyphicon.glyphicon-plus{:href => "#"} 
+      =image_tag "logo_r.png", class: "navbar-brand "
+    #site-wrapper
+      #site-canvas
+        #site-menu
+          =image_tag "shane_founder.jpg", class: "img-circle"
+          %h2
+            Shane Founder
+          %ul.nav.nav-sidebar
+            %li
+              %a{:href => "/", :title => "Home"} Home
+            %li
+              %a{:href => "/", :title => "About Me"} About Me
+            %li
+              %a{:href => "/", :title => "Contact Me"} Contact Me
+          
