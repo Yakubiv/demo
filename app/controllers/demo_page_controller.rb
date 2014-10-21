@@ -6,4 +6,6 @@ class DemoPageController < ApplicationController
       format.html.phone    # /app/views/home/index.html+phone.erb
     end
   end
+  def show
+  end
 end

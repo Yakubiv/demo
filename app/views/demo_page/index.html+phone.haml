@@ -11,7 +11,8 @@
     #site-wrapper
       #site-canvas
         .navbar.navbar-default.navbar-fixed-top
-          %a#slide_button.toggle-nav.navbar-brand.navbar-left.gglyphicon.glyphicon-plus{:href => "#"}
+          %a#slide_button.toggle-nav.navbar-brand.navbar-left{:href => "#"}
+            = fa_icon('bar')
           //= image_tag "logo_r.png", class: "navbar-brand logo-p"
         #site-menu
           =image_tag "shane_founder.jpg", class: "img-circle"
@@ -24,3 +25,4 @@
               %a{:href => "/", :title => "About Me"} About Me
             %li
               %a{:href => "/", :title => "Contact Me"} Contact Me
+      = fa_icon('user 5x')
