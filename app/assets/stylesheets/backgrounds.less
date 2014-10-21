@@ -1,0 +1,68 @@
+@import "bootstrap/mixins.less";
+@import "bootstrap/variables.less";
+
+@brand-primary:         RGBA(70, 151, 206, 1);
+@brand-success:         RGBA(93, 204, 122, 1);
+@brand-warning:         RGBA(247, 143, 46, 1);
+@brand-danger:          RGBA(239, 99, 74, 1);
+@brand-info:            RGBA(55, 168, 224, 1);
+
+@brand-black:           RGBA(59, 80, 101, 1);
+@brand-dark:            RGBA(168, 184, 200, 1);
+@brand-light:           #ebeef5;
+@brand-default:         RGBA(168, 184, 200, 1);
+
+
+.bg-light {
+  .color-variant(@brand-light, 2%, 4%, 2%, 4%);
+  color: @text-color;
+}
+
+.bg-dark {
+  .color-variant(@brand-dark, 3.5%, 7.5%, 3.5%, 7%);
+  .font-variant(@brand-dark, #fff, 35%, 10%, 50%, 45%);
+}
+
+.bg-black {
+  .color-variant(@brand-black, 3.5%, 7.5%, 3.5%, 7%);
+  .font-variant(@brand-black, #fff, 35%, 10%, 50%, 45%);
+}
+
+.bg-primary {
+  .color-variant(@brand-primary, 3.5%, 7.5%, 3.5%, 7%);
+  .font-variant(@brand-primary, #fff, 35%, 10%, 50%, 45%);
+}
+
+// some light color
+
+.bg-success {
+  .color-variant(@brand-success, 3.5%, 7.5%, 3.5%, 7%);
+  .font-variant(@brand-success, #fff, 35%, -20%, 45%, 40%);
+}
+
+.bg-info {
+  .color-variant(@brand-info, 3.5%, 7.5%, 3.5%, 7%);
+  .font-variant(@brand-info, #fff, 35%, -20%, 45%, 40%);
+}
+
+.bg-warning {
+  .color-variant(@brand-warning, 3.5%, 7.5%, 3.5%, 7%);
+  .font-variant(@brand-warning, #fff, 35%, -20%, 45%, 40%);
+}
+
+.bg-danger {
+  .color-variant(@brand-danger, 3.5%, 7.5%, 3.5%, 7%);
+  .font-variant(@brand-danger, #fff, 35%, -20%, 45%, 40%);
+}
+
+.bg-white {
+  background-color: #fff;
+  color: @text-color;
+  a {
+    color: @link-color;
+    &:hover{
+      color: darken(@link-color, 10%);
+    }
+  }
+  .text-muted{color: @text-muted}
+}

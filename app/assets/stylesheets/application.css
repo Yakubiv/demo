@@ -12,5 +12,6 @@
  *= require custom
  *= require app.layout 
  *= require bootstrap/bootstrap
+ *= require backgrounds
  *= require font-awesome
  */
