@@ -16,8 +16,8 @@
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   
-  -webkit-transition: 300ms ease all;
-  transition: 300ms ease all;
+  -webkit-transition: 250ms ease all;
+  transition: 250ms ease all;
  
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -28,19 +28,19 @@
   padding: 5% 0; /* Temp: Just spacing. */
 }
 .show-nav #site-canvas {
-  -webkit-transform: translateX(300px);
-  transform: translateX(300px);
+  -webkit-transform: translateX(250px);
+  transform: translateX(250px);
   
-  -webkit-transform: translate3d(300px, 0, 0);
-  transform: translate3d(300px, 0, 0);
+  -webkit-transform: translate3d(250px, 0, 0);
+  transform: translate3d(250px, 0, 0);
 }
 
 #site-menu {
-  width: 300px;
+  width: 250px;
   height: 100%;
   position: absolute;
   top: 0;
-  left: -300px;
+  left: -250px;
   background: #999;
   padding-top: 20px;
   padding-left: 20px;
@@ -51,8 +51,22 @@
     height: 100px;
   }
 }
+@media(max-width: 100px) {
+  #logo-p{
+    position: static;
+  }
+}
 
 
+
+#logo-p{
+  position: relative;
+  margin: 0 auto;
+  img{
+    position: absolute; 
+  
+    
+}}
 
 
 /* Just styles... Not relevant to demo */
