@@ -5,23 +5,43 @@
         %aside.aside-lg.bg-black
           %section.vbox.step-sidebar
             %header.header.bg-black.lt
-              Sidebar Header
+              %a{ href: "/", title: "Home page"}
+                = image_tag "logo_r.png", class: "navbar-brand"
             %section.scrollable 
-              =image_tag "shane_founder.jpg", class: "img-circle"
-              %h2
-                Shane Founder
-              %ul.nav.nav-sidebar
-                %li
-                  %a{:href => "/", :title => "Home"} Home
-                %li
-                  %a{:href => "/", :title => "About Me"} About Me
-                %li
-                  %a{:href => "/", :title => "Contact Me"} Contact Me
-                  Sidebar content
+              #menu-box
+                .container
+                  =image_tag "shane_founder.jpg", class: "img-circle"
+                  %span Shane 
+                %ul.nav.nav-sidebar
+                  %li
+                    %a{ href: "/", title: "PATHS"} 
+                      = fa_icon('road')
+                      PARHS
+                  %li
+                    %a{ href: "/", title: "MAPS"} 
+                      = fa_icon('location-arrow')
+                      MAPS
+                  %li
+                    %a{ href: "/", title: "ACTIVITES"} 
+                      = fa_icon('bell')
+                      ACTIVITES
+                  %li
+                    %a{ href: "/", title: "ACTIVITES"} 
+                      = fa_icon('tasks ')
+                      PROGRESS
+                .col-xs-1.col-xs-offset-3
+                  %a{href: "/", title:"Setting"}
+                    = fa_icon('gear')
+                .col-xs-1
+                  %a{href:"/", title:"Invite friends"}
+                    = fa_icon('users')
+                .col-xs-1
+                  %a{href: "/", titele: "Comments"}
+                    = fa_icon('comments')
     %section.vbox
       %header.header.bg-light.lter.b-b
-        %a#slide_button.toggle-nav.navbar-brand.navbar-left.glyphicon.glyphicon-plus{:href => "#"}
-        Main Header
+        %a#slide_button.toggle-nav.navbar-left{:href => "#"}
+          = fa_icon('bars')
       %section.resource.scrollable
         Main Content
         
