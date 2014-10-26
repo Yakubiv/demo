@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
+  get 'activites/index'
+
+  get 'paths/index'
+
   root 'demo_page#index'
 
   resource :profile
+  resource :path
+  resource :map 
+  resource :activites
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
