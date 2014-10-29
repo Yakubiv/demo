@@ -31,8 +31,10 @@
       %header.header.bg-light.lter.b-b
         %a#slide_button.toggle-nav.navbar-left{:href => "#"}
           = fa_icon('bars')
-        %a#header{ href: "/", title: "Home page"}
-          = image_tag "logo_r.png", class: "navbar-brand"
+        #search-box
+          %form.navbar-form
+            %input{placeholder:"EXPLORE", class:"fotm-control"}
+            = fa_icon('search')
       %section.resource.scrollable
         Main Content
         
