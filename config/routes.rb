@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'progresses/index'
+
+  get 'progresses/show'
+
   get 'activites/index'
 
   get 'paths/index'
@@ -9,6 +13,7 @@ Rails.application.routes.draw do
   resource :path
   resource :map 
   resource :activites
+  resource :progress
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
