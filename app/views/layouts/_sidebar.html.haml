@@ -6,14 +6,14 @@
     .container
       =image_tag "shane_founder.jpg", class: "img-circle"
       %span Shane 
-    %ul.btn.btn-group.btn-group-vertical
-      %li.btn
-        = link_to(fa_icon('road', text:'PATH'), path_path, class:"btn btn-lg button-my")
-      %li.btn
+    %ul.btn.btn-group
+      %li.btn{class: current_page?(path_path) && 'active'}
+        = link_to(fa_icon('road', text:'PATH'), path_path, class:"btn btn-lg ")
+      %li.btn{class: current_page?(map_path) && 'active'}
         = link_to(fa_icon('location-arrow', text:'MAPS'), map_path, class:"btn btn-lg")
-      %li.btn
+      %li.btn{class: current_page?(activites_path) && 'active'}
         = link_to(fa_icon('bell', text:'ACTIVITES'), activites_path, class:"btn btn-lg")
-      %li.btn
+      %li.btn{class: current_page?(progress_path) && 'active'}
         = link_to(fa_icon('tasks', text: 'PROGRESS'), progress_path, class:"btn btn-lg")
     .col-xs-1.col-xs-offset-3
       = link_to(fa_icon('gear', title:'Setting'),profile_path, class:"btn btn-sm navbar-btn")
