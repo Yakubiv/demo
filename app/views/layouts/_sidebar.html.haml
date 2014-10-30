@@ -7,17 +7,18 @@
       =image_tag "shane_founder.jpg", class: "img-circle"
       %span Shane 
     %ul.btn.btn-group
-      %li.btn{class: current_page?(path_path) && 'active'}
+      %li.btn{class: "#{'active' if controller_name == 'paths'}"}
         = link_to(fa_icon('road', text:'PATH'), path_path, class:"btn btn-lg ")
-      %li.btn{class: current_page?(map_path) && 'active'}
+      %li.btn{class: "#{'active' if controller_name == 'maps'}"}
         = link_to(fa_icon('location-arrow', text:'MAPS'), map_path, class:"btn btn-lg")
-      %li.btn{class: current_page?(activites_path) && 'active'}
+      %li.btn{class: "#{'active' if controller_name == 'activites'}"}
         = link_to(fa_icon('bell', text:'ACTIVITES'), activites_path, class:"btn btn-lg")
-      %li.btn{class: current_page?(progress_path) && 'active'}
+      %li.btn{class: "#{'active' if controller_name == 'progress'}"}
         = link_to(fa_icon('tasks', text: 'PROGRESS'), progress_path, class:"btn btn-lg")
-    .col-xs-1.col-xs-offset-3
-      = link_to(fa_icon('gear', title:'Setting'),profile_path, class:"btn btn-sm navbar-btn")
-    .col-xs-1
-      = link_to(fa_icon('users', title:'Invite friends'), profile_path, class:"btn btn-sm navbar-btn")
-    .col-xs-1
-      = link_to(fa_icon('comments', title:'Comments'), profile_path, class:"btn btn-sm navbar-btn")
+%footer
+  .col-xs-1.col-xs-offset-3
+    = link_to(fa_icon('gear', title:'Setting'),profile_path, class:"btn btn-sm navbar-btn")
+  .col-xs-1
+    = link_to(fa_icon('users', title:'Invite friends'), profile_path, class:"btn btn-sm navbar-btn")
+  .col-xs-1
+    = link_to(fa_icon('comments', title:'Comments'), profile_path, class:"btn btn-sm navbar-btn")
