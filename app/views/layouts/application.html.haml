@@ -7,5 +7,22 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-
-    = yield
+    #site-wrapper
+      #site-canvas
+        #site-menu
+          %section.hbox.stretch
+            %aside.aside-lg.bg-black
+              %section.vbox.step-sidebar
+                =render 'layouts/sidebar'
+        %section.vbox
+          %header.header.bg-light.lter.b-b
+            %a#slide_button.toggle-nav.navbar-left{:href => "#"}
+              = fa_icon('bars')
+            #search-box
+              %form
+                .input-group
+                  %input{placeholder:"EXPLORE", class:"fotm-control"}
+          %section.resource.scrollable
+            .container
+              Main Content
+              = yield

@@ -1,0 +1,23 @@
+%header.header.bg-black.lt
+  %a{ href: "/", title: "Home page"}
+    = image_tag "logo_r.png", class: "navbar-brand"
+%section.scrollable 
+  #menu-box
+    .container
+      =image_tag "shane_founder.jpg", class: "img-circle"
+      %span Shane 
+    %ul.btn.btn-group.btn-group-vertical
+      %li.btn
+        = link_to(fa_icon('road', text:'PATH'), path_path, class:"btn btn-lg button-my")
+      %li.btn
+        = link_to(fa_icon('location-arrow', text:'MAPS'), map_path, class:"btn btn-lg")
+      %li.btn
+        = link_to(fa_icon('bell', text:'ACTIVITES'), activites_path, class:"btn btn-lg")
+      %li.btn
+        = link_to(fa_icon('tasks', text: 'PROGRESS'), progress_path, class:"btn btn-lg")
+    .col-xs-1.col-xs-offset-3
+      = link_to(fa_icon('gear', title:'Setting'),profile_path, class:"btn btn-sm navbar-btn")
+    .col-xs-1
+      = link_to(fa_icon('users', title:'Invite friends'), profile_path, class:"btn btn-sm navbar-btn")
+    .col-xs-1
+      = link_to(fa_icon('comments', title:'Comments'), profile_path, class:"btn btn-sm navbar-btn")

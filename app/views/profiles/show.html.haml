@@ -1,39 +1,41 @@
-#site-wrapper
-  #site-canvas
-    #site-menu
-      %section.hbox.stretch
-        %aside.aside-lg.bg-black
-          %section.vbox.step-sidebar
-            %header.header.bg-black.lt
-              %a{ href: "/", title: "Home page"}
-                = image_tag "logo_r.png", class: "navbar-brand"
-            %section.scrollable 
-              #menu-box
-                .container
-                  =image_tag "shane_founder.jpg", class: "img-circle"
-                  %span Shane 
-                %ul.btn.btn-group.btn-group-vertical
-                  %li.btn
-                    = link_to(fa_icon('road', text:'PATH'), path_path, class:"btn btn-lg")
-                  %li.btn
-                    = link_to(fa_icon('location-arrow', text:'MAPS'), map_path, class:"btn btn-lg")
-                  %li.btn
-                    = link_to(fa_icon('bell', text:'ACTIVITES'), activites_path, class:"btn btn-lg")
-                  %li.btn
-                    = link_to(fa_icon('tasks', text: 'PROGRESS'), progress_path, class:"btn btn-lg")
-                .col-xs-1.col-xs-offset-3
-                  = link_to(fa_icon('gear', title:'Setting'),profile_path, class:"btn btn-sm navbar-btn")
-                .col-xs-1
-                  = link_to(fa_icon('users', title:'Invite friends'), profile_path, class:"btn btn-sm navbar-btn")
-                .col-xs-1
-                  = link_to(fa_icon('comments', title:'Comments'), profile_path, class:"btn btn-sm navbar-btn")
-    %section.vbox
-      %header.header.bg-light.lter.b-b
-        %a#slide_button.toggle-nav.navbar-left{:href => "#"}
-          = fa_icon('bars')
-        #search-box
-          %form.navbar-form
-            %input{placeholder:"EXPLORE", class:"fotm-control"}
+//
+  #site-wrapper
+    #site-canvas
+      #site-menu
+        %section.hbox.stretch
+          %aside.aside-lg.bg-black
+            %section.vbox.step-sidebar
+              %header.header.bg-black.lt
+                %a{ href: "/", title: "Home page"}
+                  = image_tag "logo_r.png", class: "navbar-brand"
+              %section.scrollable 
+                #menu-box
+                  .container
+                    =image_tag "shane_founder.jpg", class: "img-circle"
+                    %span Shane 
+                  %ul.btn.btn-group.btn-group-vertical
+                    %li.btn
+                      = link_to(fa_icon('road', text:'PATH'), path_path, class:"btn btn-lg")
+                    %li.btn
+                      = link_to(fa_icon('location-arrow', text:'MAPS'), map_path, class:"btn btn-lg")
+                    %li.btn
+                      = link_to(fa_icon('bell', text:'ACTIVITES'), activites_path, class:"btn btn-lg")
+                    %li.btn
+                      = link_to(fa_icon('tasks', text: 'PROGRESS'), progress_path, class:"btn btn-lg")
+                  .col-xs-1.col-xs-offset-3
+                    = link_to(fa_icon('gear', title:'Setting'),profile_path, class:"btn btn-sm navbar-btn")
+                  .col-xs-1
+                    = link_to(fa_icon('users', title:'Invite friends'), profile_path, class:"btn btn-sm navbar-btn")
+                  .col-xs-1
+                    = link_to(fa_icon('comments', title:'Comments'), profile_path, class:"btn btn-sm navbar-btn")
+      %section.vbox
+        %header.header.bg-light.lter.b-b
+          %a#slide_button.toggle-nav.navbar-left{:href => "#"}
+            = fa_icon('bars')
+          #search-box
+            %form.navbar-form
+              %input{placeholder:"EXPLORE", class:"fotm-control"}
 
-      %section.resource.scrollable
-        Main Content
+        %section.resource.scrollable
+          Main Content
+//
