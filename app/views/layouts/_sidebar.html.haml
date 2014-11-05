@@ -5,7 +5,8 @@
   #menu-box
     .wrapper
       =image_tag "shane_founder.jpg", class: "img-circle"
-      %span Shane 
+      %span.text Shane
+      = link_to(fa_icon('plus', text: "Follow"),path_path, class:"btn btn-success") 
     .nav-primary
       %ul.nav
         %li{class: "#{'active' if controller_name == 'paths'}"}
