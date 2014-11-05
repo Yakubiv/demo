@@ -13,9 +13,11 @@
           %section.hbox.stretch
             %aside.aside-lg.bg-black
               %section.vbox.step-sidebar
-                =render 'layouts/sidebar'
+                = render 'layouts/sidebar'
         %section.vbox
           %header.header.bg-light.lter.b-b
+            %nav
+              = render 'layouts/registration'
             #search-box
               %form
                 .input-group
@@ -26,8 +28,10 @@
             #content
               .row
                 .col-lg-8
-                  Main Content
-                  = yield
+                  .panel
+                    Main Content
+                    = yield
                 .col-lg-4
-                  Not main
+                  .panel
+                    Not main
                   

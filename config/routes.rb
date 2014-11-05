@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
-  get 'progresses/index'
 
-  get 'progresses/show'
 
-  get 'activites/index'
-
-  get 'paths/index'
-
+  devise_for :users, :controllers => {:registrations => "registrations"}
   root 'demo_page#index'
 
   resource :profile
@@ -14,7 +9,10 @@ Rails.application.routes.draw do
   resource :map 
   resource :activites
   resource :progress
-
+  resource :setting
+  resource :invite
+  resource :comment
+  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
