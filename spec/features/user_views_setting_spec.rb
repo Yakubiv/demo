@@ -1,9 +1,8 @@
 require "rails_helper"
 
-feature "User" do 
-	scenario "click on setting" do
-		visit root_path
-		click_link "Setting"
+feature "Setting" do 
+	scenario "creation" do
+		visit setting_path
 		expect(page).to have_content("Setting")
 	end
 end

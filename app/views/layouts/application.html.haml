@@ -17,11 +17,12 @@
         %section.vbox
           %header.header.bg-light.lter.b-b
             #search-box
+              .m-box
+                = fa_icon('search')
               %form
-                .input-group
-                  %span.input-group-addon
-                    %i.fa.fa-search
-                  %input{type: "search", placeholder:"EXPLORE"}
+                %input{type: "search", placeholder:"EXPLORE"}
+            #box
+              = link_to(fa_icon('plus'), progress_path)
           %section.resource.scrollable
             #content
               .row

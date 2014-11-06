@@ -1,9 +1,8 @@
 require "rails_helper"
 
-feature "User" do 
-	scenario "click on comment" do
-		visit root_path
-		click_link "Comment"
+feature "Comment" do 
+	scenario "creation" do
+		visit comment_path
 		expect(page).to have_content("Comment")
 	end
 end
