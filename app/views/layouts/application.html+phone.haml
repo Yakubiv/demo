@@ -14,7 +14,7 @@
             %aside.aside-lg.bg-black
               %section.vbox.step-sidebar
                 =render 'layouts/sidebar'
-        %section.vbox
+        %section.vbox.transbox
           %header.header.bg-light.lter.b-b
             %a#slide_button.toggle-nav.navbar-left{href: "#"}
               = fa_icon('bars')
@@ -22,7 +22,7 @@
               %form
                 .input-group
                   %input{type: "search", placeholder:"EXPLORE"}
-          %section.resource.scrollable
+          %section.resource.scrollable.transbox
             #content
               .row
                 .col-lg-12
