@@ -1,0 +1,9 @@
+= form_for @post do |p|
+	%p
+		= p.hidden_field :user_id, value: current_user.id
+	%p
+		= p.text_field :title, placeholder: 'Subject', class: 'form-control'
+	%p
+		= p.text_area :content, placeholder: 'Content', class: 'form-control', rows:  10, cols:68
+	%p
+		= p.submit 'Add new'

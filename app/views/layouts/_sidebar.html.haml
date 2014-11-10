@@ -1,12 +1,13 @@
 %header.header.bg-black.lt
   %a{ href: "/", title: "Home page"}
-    = image_tag "logo_r.png", class: "navbar-brand"
+    = image_tag "logo_m.png", class: "navbar-brand logo"
 %section.scrollable 
   #menu-box
     .wrapper
       =image_tag "shane_founder.jpg", class: "img-circle"
-      %span.text Shane
-      = link_to"Follow",path_path, class:"btn btn-my"
+      %span.text 
+        = current_user.email
+      = link_to"New shpora",new_post_path, class:"btn btn-my"
     .nav-primary
       %ul.nav
         %li{class: "#{'active' if controller_name == 'paths'}"}

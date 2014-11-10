@@ -1,1 +1,9 @@
-%h1 Welcome to your page
+.container.theme-showcase.welcome
+	.row
+		.jumbotron
+			%h1 Shpora
+			%p That's a free service for students wich can help everybody 
+			%p to pass exams and something like this :)
+			%p For now there is #{Post.count} posts with a different subjects!
+			= link_to 'Get started', new_user_registration_path, class: "btn btn-success"
+	

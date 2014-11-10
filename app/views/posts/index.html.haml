@@ -1,0 +1,7 @@
+%h1 My shporas
+- @posts.each do |post|
+	%p
+		= link_to post.title, post
+	%p
+		= link_to 'edit', edit_post_path(post)
+= will_paginate @posts

@@ -33,6 +33,7 @@ gem 'better_errors'
 gem "browser"
 gem 'font-awesome-rails'
 gem 'devise'
+gem 'will_paginate'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 group :production do

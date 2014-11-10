@@ -7,6 +7,7 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
+  - if user_signed_in?
     #site-wrapper
       #site-canvas
         #site-menu
@@ -16,13 +17,12 @@
                 = render 'layouts/sidebar'
         %section.vbox
           %header.header.bg-light.lter.b-b
+            = render 'layouts/registration'
             #search-box
               .m-box
                 = fa_icon('search')
               %form
                 %input{type: "search", placeholder:"EXPLORE"}
-            #box
-              = link_to(fa_icon('plus'), progress_path)
           %section.resource.scrollable
             #content
               .row
@@ -32,5 +32,15 @@
                     = yield
                 .col-lg-4
                   .panel
+                    %h2 Favorite
                     Not main
-                  
+  - else
+    %section.vbox
+      %header.header.bg-light.lter.b-b
+        = image_tag "logo_m.png", class: "navbar-brand logo"
+        = render 'layouts/registration'
+      = yield
+      %footer
+        &copy 2014 Shpora
+
+          

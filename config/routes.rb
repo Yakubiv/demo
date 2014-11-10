@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :users
   root 'demo_page#index'
 
   resource :profile
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resource :invite
   resource :comment
   resources :users
+  resources :posts
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

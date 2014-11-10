@@ -1,9 +1,10 @@
 ENV["RAILS_ENV"] ||= 'test' 
 require File.expand_path("../../config/environment", __FILE__) 
-require 'rspec/rails' 
-require 'rspec/autorun' 
-require "capybara/rspec" 
+require 'rspec/rails'
+require 'capybara/rspec' 
 require 'database_cleaner'
+
+
 
 
 RSpec.configure do |config|
@@ -20,6 +21,24 @@ RSpec.configure do |config|
     #   # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
+
+   config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+  
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
+  
 
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
