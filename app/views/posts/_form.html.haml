@@ -4,6 +4,6 @@
 	%p
 		= p.text_field :title, placeholder: 'Subject', class: 'form-control'
 	%p
-		= p.text_area :content, placeholder: 'Content', class: 'form-control', rows:  10, cols:68
+		= p.text_area :content, placeholder: 'Content', class: 'form-control ckeditor', rows:  10, cols: 60
 	%p
-		= p.submit 'Add new'
+		= p.submit 'Add new', class: ' btn btn-my'

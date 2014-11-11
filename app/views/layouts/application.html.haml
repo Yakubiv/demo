@@ -26,14 +26,12 @@
           %section.resource.scrollable
             #content
               .row
-                .col-lg-8
-                  .panel
-                    Main Content
-                    = yield
-                .col-lg-4
+                .col-lg-9
+                  = yield
+                .col-lg-3
                   .panel
                     %h2 Favorite
-                    Not main
+                    
   - else
     %section.vbox
       %header.header.bg-light.lter.b-b

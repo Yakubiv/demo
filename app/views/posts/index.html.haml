@@ -1,7 +1,18 @@
-%h1 My shporas
+%h3.align My shporas
+%hr
 - @posts.each do |post|
-	%p
-		= link_to post.title, post
-	%p
-		= link_to 'edit', edit_post_path(post)
+	.panel
+		.panel-body
+			%h3.clearfix.m-b
+				= post.title
+			%hr
+			%p
+				= raw(post.content)
+		.panel-footer.bg-light.lter
+			= link_to 'View', post, class: 'btn btn-info pull-right view-btn'
+			.nav.nav-pills
+				%li
+					= link_to(fa_icon('gear', title:'Edit post'), edit_post_path(post), class: "btn btn-lg navbar-btn")
+				%li
+					= link_to(fa_icon('trash', title: 'Delete'), post, confirm: 'Are you sure?', method: :delete, class: 'btn btn-lg navbar-btn')
 = will_paginate @posts
