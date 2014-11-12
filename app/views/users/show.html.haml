@@ -1,0 +1,61 @@
+= content_for(:title, "Страница пользователя #{@user.email} | shpora")
+-if current_user == @user
+	.col-lg-9
+		%h1.align Мои шпаргалки
+		- if @user.posts.any?
+			- @user.posts.each do |post|
+				.panel
+					.panel-body
+						%h3.clearfix.m-b
+							= post.title
+						%hr
+						%p
+							= raw(post.content)
+					.panel-footer.bg-light.lter
+						= link_to 'View', user_post_path(post.user, post), class: 'btn btn-info pull-right view-btn btn-block'
+						.nav.nav-pills
+							%li
+								= link_to(fa_icon('trash', title: 'Delete'), post, confirm: 'Are you sure?', method: :delete, class: 'btn btn-lg navbar-btn')
+							%li
+								= link_to(fa_icon('edit', title:'Edit post'), edit_user_post_path(post.user, post), class: "btn btn-lg navbar-btn")
+		- else
+			%h1 У вас нету пока шпор!
+	.col-lg-3
+		%h2 Избранное
+		- if @user.favorites.any?
+			- @user.favorite_posts.each do |post|
+				.panel
+					%h4
+						= link_to post.title, user_post_path(post.user, post)
+					= link_to '', delete_favorite_path(current_user.id, post.id), method: :delete, class: "fa fa-trash-o btn-lg"
+					%hr
+		- else
+			%h1 Вы еще не добавили ни одной страницы в Избранное. 
+- else
+	.col-lg-9
+		%h3.align
+			= @user.email
+		- @user.posts.each do |post|
+			.panel
+				.panel-body
+					%h3.clearfix.m-b
+						= post.title
+					%hr
+					%p
+						= raw(post.content)
+				.panel-footer.bg-light.lter
+					.nav.nav-pills
+						= link_to 'View', user_post_path(post.user, post), class: 'btn btn-info pull-right btn-block'
+	.col-lg-3
+		%h2 Избранное
+		- if @user.favorites.any?
+			- @user.favorite_posts.each do |post|
+				.panel
+					.panel-body
+						%h4
+							= post.title
+					.panel-footer.bg-light.lter
+						.nav.nav-pills
+							= link_to 'View', user_post_path(post.user, post), class: 'btn btn-info btn-sm btn-block'
+		- else
+			%h1 Пользователь не добавил ни одной страницы в Избранное. 

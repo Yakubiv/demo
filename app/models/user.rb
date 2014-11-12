@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :posts
   has_many :favorites
-  has_many :favorite_pages, through: :favorites, source: :page
+  has_many :favorite_posts, through: :favorites, source: :post
 end

@@ -1,2 +1,11 @@
-%h1 Favorites#index
-%p Find me in app/views/favorites/index.html.haml
+%h1 Favorite
+- if @user.favorites.any?
+  .user_pages
+    - @user.favorite_posts.each do |post|
+      .one-page
+        %h2
+          = link_to post.title, user_post_path(post.user, post)
+        = link_to '', delete_favorite_path(current_user.id, post.id), method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-danger fa fa-trash-o icon-large"
+        %hr
+- else
+  %h1 You dont't have favorites

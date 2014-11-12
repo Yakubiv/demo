@@ -5,8 +5,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   root 'demo_page#index'
-  post ':user_id/favorites/:page_id', to: 'favorites#create', as: :new_favorite
-  delete ':user_id/favorites/:page_id', to: 'favorites#destroy', as: :delete_favorite
+  post ':user_id/favorites/:post_id', to: 'favorites#create', as: :new_favorite
+  delete ':user_id/favorites/:post_id', to: 'favorites#destroy', as: :delete_favorite
   get ':user_id/favorites', to: 'favorites#index', as: :favorites
   resource :profile
   resource :path

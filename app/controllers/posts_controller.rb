@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.paginate(page: params[:page], per_page: 6)
-    @user = User.find_by_email(params[:user_id])
+    @user = User.find_by_email(params[:id])
   end
 
   def new
     @post = Post.new
-    @user = User.find_by_email(params[:user_id])
+    @user = User.find_by_email(params[:id])
   end
 
   def edit
@@ -16,11 +16,12 @@ class PostsController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
-    @post = Post.find(params[:id])  
+    @post = @user.posts.find(params[:id])  
   end
 
   def create
-    @user = User.find_by_email(params[:user_id])
+
+    @user = User.find_by_email(params[:id])
     @post = Post.new(post_params)
     if @post.save
       redirect_to user_post_path(current_user, @post)
@@ -38,7 +39,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path, notice: "DELETE"
+    redirect_to user_path(current_user)
   end
 
   private

@@ -15,3 +15,25 @@
 //= require jquery_ujs  
 //= require_tree .
 
+$(function() {
+  $('#make-favorite').click(function() {
+    $button = $(this)
+    if ( $( "#make-favorite" ).hasClass( "unfavorite" ) ) {
+      $.ajax({
+        type: "POST",
+        url: '/' + $button.attr('data-user-email') + '/favorites/' + $button.attr('data-post-id'),
+        success: function() {
+          $button.removeClass('unfavorite').addClass('favorite').html("<span> Добавлено в избранное</span>"); ; 
+        }
+      })
+    } else {
+      $.ajax({
+        type: "DELETE",
+        url: '/' + $button.attr('data-user-email') + '/favorites/' + $button.attr('data-post-id'),
+        success: function() {
+          $button.removeClass('favorite').addClass('unfavorite').html("<span> В избранное!</span>"); 
+        }
+      })
+    }
+  });
+});

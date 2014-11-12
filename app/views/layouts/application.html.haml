@@ -2,7 +2,8 @@
 %html
   %head
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
-    %title Demo
+    %title 
+      = yield(:title)
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
@@ -26,10 +27,8 @@
           %section.resource.scrollable
             #content
               .row
-                .col-lg-9
-                  = yield
-                .col-lg-3
-                  %h2 Favorite
+                = yield
+
                     
   - else
     %section.vbox

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find_by_email(params[:id])
+    @user = User.find(params[:id])
+    @posts = @user.posts.all
   end
 
   def search

@@ -7,17 +7,17 @@
       =image_tag "shane_founder.jpg", class: "img-circle"
       %span.text 
         = current_user.email
-      = link_to"New shpora",new_post_path, class:"btn btn-my"
+      = link_to"Новая шпора",new_post_path, class:"btn btn-my"
     .nav-primary
       %ul.nav
         %li{class: "#{'active' if controller_name == 'posts'}"}
-          = link_to(fa_icon('road', text:'POSTS'), posts_path)
-        %li{class: "#{'active' if controller_name == 'maps'}"}
-          = link_to(fa_icon('location-arrow', text:'MAPS'), map_path)
+          = link_to(fa_icon('book', text:'Шпаргалки'), posts_path)
+        %li{class: "#{'active' if controller_name == 'users'}"}
+          = link_to(fa_icon('user', text:'Моя страничка'), user_path(current_user))
         %li{class: "#{'active' if controller_name == 'activites'}"}
           = link_to(fa_icon('bell', text:'ACTIVITES'), activites_path)
-        %li{class: "#{'active' if controller_name == 'progresses'}"}
-          = link_to(fa_icon('tasks', text: 'PROGRESS'), progress_path)
+        %li{class: "#{'active' if controller_name == 'registrations'}"}
+          = link_to(fa_icon('tasks', text: 'Настройки'), edit_user_registration_path)
 %footer.bg-black.lt
   .col-xs-2.col-xs-offset-2
     = link_to(fa_icon('gear', title:'Edit profile'),edit_user_registration_path, class:"btn btn-sm navbar-btn")
