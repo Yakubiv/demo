@@ -5,8 +5,8 @@ feature 'User profile' do
 		sign_in_with 'petro@gmail.com', 'password'
 	end
 	scenario 'sees path link' do
-	click_link 'PATH'
-	expect(page).to have_content('Path page')
+	click_link 'POSTS'
+	expect(page).to have_content('My shporas')
 	end
 
 	scenario 'sees maps link' do

@@ -1,9 +1,27 @@
-.container.theme-showcase.welcome
-	.row
-		.jumbotron
-			%h1 Shpora
-			%p That's a free service for students wich can help everybody 
-			%p to pass exams and something like this :)
-			%p For now there is #{Post.count} posts with a different subjects!
-			= link_to 'Get started', new_user_registration_path, class: "btn btn-success"
-	
+- if user_signed_in?
+	%h3.align My shporas
+	%hr
+	- @posts.each do |post|
+		.panel
+			.panel-body
+				%h3.clearfix.m-b
+					= post.title
+				%hr
+				%p
+					= raw(post.content)
+			.panel-footer.bg-light.lter
+				= link_to 'View', post, class: 'btn btn-info pull-right view-btn'
+				.nav.nav-pills
+					%li
+						= link_to(fa_icon('trash', title: 'Delete'), post, confirm: 'Are you sure?', method: :delete, class: 'btn btn-lg navbar-btn')
+	= will_paginate @posts
+- else
+	.container.theme-showcase.welcome
+		.row
+			.jumbotron
+				%h1 Shpora
+				%p That's a free service for students wich can help everybody 
+				%p to pass exams and something like this :)
+				%p Also you can use our shporas without registration 
+				%p For now there is #{Post.count} posts with a different subjects!
+				= link_to 'Get started', new_user_registration_path, class: "btn btn-success"

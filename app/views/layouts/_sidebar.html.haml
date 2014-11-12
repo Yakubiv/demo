@@ -10,7 +10,7 @@
       = link_to"New shpora",new_post_path, class:"btn btn-my"
     .nav-primary
       %ul.nav
-        %li{class: "#{'active' if controller_name == 'paths'}"}
+        %li{class: "#{'active' if controller_name == 'posts'}"}
           = link_to(fa_icon('road', text:'POSTS'), posts_path)
         %li{class: "#{'active' if controller_name == 'maps'}"}
           = link_to(fa_icon('location-arrow', text:'MAPS'), map_path)

@@ -1,5 +1,8 @@
-%h1 View shpora
-%h4	
+%h2
 	= @post.title
+	= link_to(fa_icon('edit', title:'Edit post'), edit_user_post_path(@user, @post), class: "btn btn-lg navbar-btn")
+%h4
+	= @user.email
+
 %p
-	= @post.content
+	= raw(@post.content)

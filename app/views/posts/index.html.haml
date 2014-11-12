@@ -9,10 +9,8 @@
 			%p
 				= raw(post.content)
 		.panel-footer.bg-light.lter
-			= link_to 'View', post, class: 'btn btn-info pull-right view-btn'
+			= link_to 'View', user_post_path(post.user, post), class: 'btn btn-info pull-right view-btn'
 			.nav.nav-pills
-				%li
-					= link_to(fa_icon('gear', title:'Edit post'), edit_post_path(post), class: "btn btn-lg navbar-btn")
 				%li
 					= link_to(fa_icon('trash', title: 'Delete'), post, confirm: 'Are you sure?', method: :delete, class: 'btn btn-lg navbar-btn')
 = will_paginate @posts
