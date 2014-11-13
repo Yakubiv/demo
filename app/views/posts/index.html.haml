@@ -6,9 +6,6 @@
 			.panel-body
 				%h3.clearfix.m-b
 					= post.title
-				%hr
-				%p
-					= raw(post.content)
 			.panel-footer.bg-light.lter
 				.nav.nav-pills
 					= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info pull-right view-btn'
