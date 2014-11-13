@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'favorites/index'
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
   root 'demo_page#index'
   post ':user_id/favorites/:post_id', to: 'favorites#create', as: :new_favorite
   delete ':user_id/favorites/:post_id', to: 'favorites#destroy', as: :delete_favorite

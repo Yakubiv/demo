@@ -2,6 +2,10 @@ class PostsController < ApplicationController
   def index
     @posts = Post.paginate(page: params[:page], per_page: 6)
     @user = User.find_by_email(params[:id])
+    @recent_posts = Post.order("created_at desc").limit(10).offset(0)
+    if user_signed_in?
+      @recent_user_post = current_user.posts.order("created_at desc").limit(4).offset(0)
+    end
   end
 
   def new
@@ -17,6 +21,10 @@ class PostsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])  
+    @recent_posts = Post.order("created_at desc").limit(5).offset(0)
+    if user_signed_in?
+      @recent_user_post = current_user.posts.order("created_at desc").limit(4).offset(0)
+    end
   end
 
   def create

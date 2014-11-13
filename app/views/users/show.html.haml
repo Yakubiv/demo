@@ -1,7 +1,8 @@
 = content_for(:title, "Страница пользователя #{@user.email} | shpora")
 -if current_user == @user
 	.col-lg-9
-		%h1.align Мои шпаргалки
+		%h2.align Мої шпаргалки
+		%hr
 		- if @user.posts.any?
 			- @user.posts.each do |post|
 				.panel
@@ -12,29 +13,31 @@
 						%p
 							= raw(post.content)
 					.panel-footer.bg-light.lter
-						= link_to 'View', user_post_path(post.user, post), class: 'btn btn-info pull-right view-btn btn-block'
+						= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info pull-right view-btn btn-block'
 						.nav.nav-pills
 							%li
-								= link_to(fa_icon('trash', title: 'Delete'), post, confirm: 'Are you sure?', method: :delete, class: 'btn btn-lg navbar-btn')
+								= link_to(fa_icon('trash', title: 'Видалити'), post, confirm: 'Ви впевнені?', method: :delete, class: 'btn btn-lg navbar-btn')
 							%li
-								= link_to(fa_icon('edit', title:'Edit post'), edit_user_post_path(post.user, post), class: "btn btn-lg navbar-btn")
+								= link_to(fa_icon('edit', title:'Редагувати'), edit_user_post_path(post.user, post), class: "btn btn-lg navbar-btn")
 		- else
-			%h1 У вас нету пока шпор!
+			.panel
+				%h4 У вас поки що немає шпаргалок!
 	.col-lg-3
-		%h2 Избранное
+		%h2 Улюблені
+		%hr
 		- if @user.favorites.any?
-			- @user.favorite_posts.each do |post|
-				.panel
+			.panel
+				- @user.favorite_posts.each do |post|
 					%h4
 						= link_to post.title, user_post_path(post.user, post)
-					= link_to '', delete_favorite_path(current_user.id, post.id), method: :delete, class: "fa fa-trash-o btn-lg"
-					%hr
+						= link_to '', delete_favorite_path(current_user.id, post.id), method: :delete, class: "fa fa-trash-o btn-lg"
 		- else
-			%h1 Вы еще не добавили ни одной страницы в Избранное. 
+			%h5 Ви ще не добавили сюди жодної шпаргалки. 
 - else
 	.col-lg-9
-		%h3.align
-			= @user.email
+		%h3.align Шпори користувача
+		%hr
+		= @user.email
 		- @user.posts.each do |post|
 			.panel
 				.panel-body
@@ -45,9 +48,17 @@
 						= raw(post.content)
 				.panel-footer.bg-light.lter
 					.nav.nav-pills
-						= link_to 'View', user_post_path(post.user, post), class: 'btn btn-info pull-right btn-block'
+						= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info pull-right view-btn'
+						- if current_user == post.user
+							= link_to(fa_icon('trash', title: 'Delete'), post, confirm: 'Are you sure?', method: :delete, class: 'btn navbar-btn')
+						- else
+							- if current_user.favorites.find_by_post_id(post.id)
+								%i.fa.fa-star.view-btn.favorite#make-favorite{ data: {post_id: post.id, user_email: current_user.id} } 
+							- else
+								%i.fa.fa-star.view-btn.unfavorite#make-favorite{ data: {post_id: post.id, user_email: current_user.id} }
 	.col-lg-3
-		%h2 Избранное
+		%h3 Улюблені
+		%hr
 		- if @user.favorites.any?
 			- @user.favorite_posts.each do |post|
 				.panel
@@ -56,6 +67,7 @@
 							= post.title
 					.panel-footer.bg-light.lter
 						.nav.nav-pills
-							= link_to 'View', user_post_path(post.user, post), class: 'btn btn-info btn-sm btn-block'
+							= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info btn-sm btn-block'
+
 		- else
-			%h1 Пользователь не добавил ни одной страницы в Избранное. 
+			%h1 Користувач не додав жодної шпори в улюблені. 

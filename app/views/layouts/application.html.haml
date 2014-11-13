@@ -23,7 +23,7 @@
               .m-box
                 = fa_icon('search')
               %form
-                %input{type: "search", placeholder:"EXPLORE"}
+                %input{type: "search", placeholder:"Шукати"}
           %section.resource.scrollable
             #content
               .row
@@ -36,7 +36,8 @@
         = image_tag "logo_m.png", class: "navbar-brand logo"
         = render 'layouts/registration'
       = yield
-      %footer
-        &copy 2014 Shpora
+      %hr
+      %footer.bg-light.lter.b-b
+        &copy 2014 Шпора
 
           

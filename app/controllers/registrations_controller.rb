@@ -1,5 +1,5 @@
-class RegistrationsController < ApplicationController
-	before_filter :configure_permitted_parameters, if: :devise_controller?
+class RegistrationsController < Devise::RegistrationsController
+  before_filter :configure_permitted_parameters, if: :devise_controller?
 
   def new
     @user = User.new
@@ -18,6 +18,7 @@ class RegistrationsController < ApplicationController
   protected
 
     def configure_permitted_parameters
-      devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password) }
+      devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password) }
     end
+
 end

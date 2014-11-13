@@ -2,8 +2,8 @@
 	%p
 		= p.hidden_field :user_id, value: current_user.id
 	%p
-		= p.text_field :title, placeholder: 'Subject', class: 'form-control'
+		= p.text_field :title, placeholder: 'Предмет', class: 'form-control'
 	%p
-		= p.text_area :content, placeholder: 'Content', class: 'form-control ckeditor', rows:  10, cols: 60
+		= p.text_area :content, placeholder: 'Вміст шпори', class: 'form-control ckeditor', rows:  10, cols: 60
 	%p
-		= p.submit 'Add new', class: ' btn btn-my'
+		= p.submit 'Готово', class: ' btn btn-my'

@@ -1,26 +1,33 @@
 = content_for(:title, "Шпаргалка")
-.col-lg-12	
-	%h2.align Шпаргалка
+.col-lg-9 
+	%h3.align Шпаргалка
+	%hr
 	.panel
-		%h2.align
+		%h3.align
 			= @post.title
 		.panel-body
 			%hr
 			- if current_user == @user
-				= link_to(fa_icon('trash', title: 'Delete'), post_path(@post), confirm: 'Are you sure?', method: :delete, class: 'btn btn-lg navbar-btn')
-				= link_to(fa_icon('edit', title:'Edit post'), edit_user_post_path(@user, @post), class: "btn btn-lg navbar-btn")
+				= link_to(fa_icon('edit', title:'Редагувати'), edit_user_post_path(@user, @post), class: "btn btn-lg navbar-btn")
 			-else
-				%h4	Cоздатель #{link_to @post.user.email, user_path(@user)}
+				%h4 Творець #{link_to @post.user.email, user_path(@user)}
 			- if current_user != @user && user_signed_in?
 				- if current_user.favorites.find_by_post_id(@post.id)
 					%i.fa.fa-star.favorite#make-favorite{ data: {post_id: @post.id, user_email: current_user.id} } 
 						%span 
-							= " " + "Добавлено в избранное"
+							= " " + "Додано в улюблені"
 				- else
 					%i.fa.fa-star.unfavorite#make-favorite{ data: {post_id: @post.id, user_email: current_user.id} }
 						%span 
-							= " " + "В избранное!"
+							= " " + "В улюблені!"
 			%p Created  #{time_ago_in_words(@post.created_at)}
 			%hr
 			%p
 				= raw(@post.content)
+.col-lg-3
+	%h3 Нещодавно додані
+	%hr
+	.panel
+		- @recent_posts.each do |page|
+			%h4.align
+				= link_to page.title, user_post_path(page.user, page)

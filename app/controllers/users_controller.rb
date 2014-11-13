@@ -1,8 +1,14 @@
 class UsersController < ApplicationController
+  
+  def index
+  @users = User.all
+  end
+
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.all
   end
+
 
   def search
   	@user = User.find_by_email(user_params)
@@ -11,6 +17,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:email)
+      params.require(:user).permit(:email, :username)
     end
 end
