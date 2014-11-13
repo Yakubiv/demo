@@ -11,6 +11,10 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @user = User.find_by_email(params[:id])
+    @recent_posts = Post.order("created_at desc").limit(10).offset(0)
+    if user_signed_in?
+      @recent_user_post = current_user.posts.order("created_at desc").limit(4).offset(0)
+    end
   end
 
   def edit

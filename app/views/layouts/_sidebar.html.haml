@@ -4,7 +4,7 @@
 %section.scrollable 
   #menu-box
     .wrapper
-      =image_tag "shane_founder.jpg", class: "img-circle"
+      =image_tag "unknow.gif", class: "img-circle"
       %span.text 
         = current_user.username
       = link_to"Створити шпору",new_post_path, class:"btn btn-my"
@@ -14,8 +14,6 @@
           = link_to(fa_icon('book', text:'Шпаргалки'), posts_path)
         %li{class: "#{'active' if controller_name == 'users'}"}
           = link_to(fa_icon('user', text:'Моя сторінка'), user_path(current_user))
-        %li{class: "#{'active' if controller_name == 'activites'}"}
-          = link_to(fa_icon('bell', text:'Населення'), activites_path)
         %li{class: "#{'active' if controller_name == 'registrations'}"}
           = link_to(fa_icon('tasks', text: 'Настройки'), edit_user_registration_path)
 %footer.bg-black.lt

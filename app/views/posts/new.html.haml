@@ -1,3 +1,11 @@
 .col-lg-9
-	%h1.align Створити шпору
+	%h3.align Створити шпору
+	%hr
 	= render 'posts/form'
+.col-lg-3
+	%h3 Нещодавно додані
+	%hr
+	.panel
+		- @recent_posts.each do |page|
+			%h4.align
+				= link_to page.title, user_post_path(page.user, page)
