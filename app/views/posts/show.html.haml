@@ -1,5 +1,5 @@
 = content_for(:title, "Шпаргалка")
-.col-lg-9 
+.col-lg-12
 	%h3.align Шпаргалка
 	%hr
 	.panel
@@ -24,10 +24,3 @@
 			%hr
 			%p
 				= raw(@post.content)
-.col-lg-3
-	%h3 Нещодавно додані
-	%hr
-	.panel
-		- @recent_posts.each do |page|
-			%h4.align
-				= link_to page.title, user_post_path(page.user, page)
