@@ -18,7 +18,6 @@
           = link_to(fa_icon('user', text:'Моя сторінка'), user_path(current_user))
         %li{class: "#{'active' if controller_name == 'registrations'}"}
           = link_to(fa_icon('tasks', text: 'Настройки'), edit_user_registration_path)
-      %p Шпаргалок на сайті #{Post.count}
 %footer.bg-black.lt
   .col-xs-2.col-xs-offset-2
     = link_to(fa_icon('gear', title:'Edit profile'),edit_user_registration_path, class:"btn btn-sm navbar-btn")
