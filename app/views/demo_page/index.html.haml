@@ -11,11 +11,13 @@
 				.panel-footer.bg-light.lter
 					.nav.nav-pills
 						= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info pull-right view-btn'
-						- if current_user != post.user.id  	
+						- if current_user == post.user
+							= link_to(fa_icon('trash', title: 'Delete'), post, confirm: 'Are you sure?', method: :delete, class: 'btn navbar-btn ')
+						- else
 							- if current_user.favorites.find_by_post_id(post.id)
-								%i.fa.fa-star.favorite.view-btn{ data: {post_id: post.id, user_email: post.user.id} } 
+								%i.fa.fa-star.view-btn.favorite{ data: {post_id: post.id, user_email: current_user.id} } 
 							- else
-								%i.fa.fa-star.unfavorite.view-btn{ data: {post_id: post.id, user_email: post.user.id} }
+								%i.fa.fa-star.view-btn.unfavorite{ data: {post_id: post.id, user_email: current_user.id} }
 	.col-lg-3
 		%h3.align Нещодавно додані
 		%hr

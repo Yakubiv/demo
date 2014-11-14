@@ -12,6 +12,8 @@
       %ul.nav
         %li{class: "#{'active' if controller_name == 'posts'}"}
           = link_to(fa_icon('book', text:'Шпаргалки'), posts_path)
+        %li{class: "#{'active' if controller_name == 'invites'}"}
+          = link_to(fa_icon('users', text:'Населення'), invite_path)
         %li{class: "#{'active' if controller_name == 'users'}"}
           = link_to(fa_icon('user', text:'Моя сторінка'), user_path(current_user))
         %li{class: "#{'active' if controller_name == 'registrations'}"}
