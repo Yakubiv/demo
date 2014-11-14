@@ -37,9 +37,9 @@
               %br/
               = f.password_field :current_password, class: "form-control"
           .form-group
-            %div= f.submit "Update", class: "btn btn-primary"
+            %div= f.submit "Готово", class: "btn btn-primary"
           .form-group
             .btn
               %p
-                Чем то розстроиньі? #{button_to "Удалитца", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn btn-danger"}
+                Чем то розстроиньі? #{button_to "Видалитися", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn btn-danger"}
 
