@@ -35,22 +35,25 @@
 		%h3.align Шпори користувача
 		%hr
 		= @user.username
-		- @user.posts.each do |post|
-			.panel
-				.panel-body
-					%h3.clearfix.m-b
-						= post.title
+		- if @user.posts.any?
+			- @user.posts.each do |post|
+				.panel
+					.panel-body
+						%h3.clearfix.m-b
+							= post.title
 
-				.panel-footer.bg-light.lter
-					.nav.nav-pills
-						= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info pull-right view-btn'
-						- if current_user == post.user
-							= link_to(fa_icon('trash', title: 'Delete'), post, confirm: 'Are you sure?', method: :delete, class: 'btn navbar-btn')
-						- else
-							- if current_user.favorites.find_by_post_id(post.id)
-								%i.fa.fa-star.view-btn.favorite#make-favorite{ data: {post_id: post.id, user_email: current_user.id} } 
+					.panel-footer.bg-light.lter
+						.nav.nav-pills
+							= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info pull-right view-btn'
+							- if current_user == post.user
+								= link_to(fa_icon('trash', title: 'Delete'), post, confirm: 'Are you sure?', method: :delete, class: 'btn navbar-btn')
 							- else
-								%i.fa.fa-star.view-btn.unfavorite#make-favorite{ data: {post_id: post.id, user_email: current_user.id} }
+								- if current_user.favorites.find_by_post_id(post.id)
+									%i.fa.fa-star.view-btn.favorite{ data: {post_id: post.id, user_email: current_user.id} } 
+								- else
+									%i.fa.fa-star.view-btn.unfavorite{ data: {post_id: post.id, user_email: current_user.id} }
+		- else
+			%h3 Користувач покищо не додав шпаргалок
 	.col-lg-3
 		%h3 Улюблені
 		%hr
@@ -65,4 +68,4 @@
 							= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info btn-sm btn-block'
 
 		- else
-			%h1 Користувач не додав жодної шпори в улюблені. 
+			%h3 Користувач не додав жодної шпори в улюблені. 
