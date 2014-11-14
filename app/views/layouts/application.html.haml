@@ -25,9 +25,11 @@
               %form
                 %input{type: "search", placeholder:"Шукати"}
           %section.resource.scrollable
-            #content
-              .row
-                = yield
+            #content.scroll
+              = yield
+          %footer
+            &copy 2014 Шпора
+
 
                     
   - else
