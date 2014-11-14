@@ -1,13 +1,10 @@
 .col-lg-9
-	- @users.each do |user|
-		%table.table.table-striped
-			%tr
-				%th.align
-					Ім'я
-				%th.align
-					Останній візит
-				%th.align 
-					Профіль	користувача
+	%table.table.table-striped
+		%tr
+			%th.align Ім'я
+			%th.align Останній візит
+			%th.align Профіль	користувача
+			- @users.each do |user|
 				%tr
 					%td.align
 						= user.username	
