@@ -1,7 +1,7 @@
 # http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.toolbar_Full
 CKEDITOR.editorConfig = (config) ->
   config.language = 'ru'
-  config.width = '840'
+  config.width = '825'
   config.height = '400'
   config.toolbar_Menu = [
     { name: 'document', items: ['Source', '-', 'Save', 'NewPage', 'DocProps', 'Preview', 'Print', '-', 'Templates'] }, 

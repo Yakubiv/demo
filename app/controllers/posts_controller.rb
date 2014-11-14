@@ -15,6 +15,7 @@ class PostsController < ApplicationController
     if user_signed_in?
       @recent_user_post = current_user.posts.order("created_at desc").limit(4).offset(0)
     end
+    
   end
 
   def edit
@@ -29,7 +30,7 @@ class PostsController < ApplicationController
   end
 
   def create
-
+    @comment = 
     @user = User.find_by_email(params[:id])
     @post = Post.new(post_params)
     if @post.save
@@ -48,7 +49,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to user_path(current_user)
+    redirect_to posts_path(@posts)
   end
 
   private
