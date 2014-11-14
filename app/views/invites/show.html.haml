@@ -1,16 +1,17 @@
-%table.table.panel
-	%tr
-		%th Id
-		%th Ім'я
-		%th Email
-		%th Останній візит
-		- @users.each do |user|
+.col-lg-9
+	- @users.each do |user|
+		%table.table.table-striped
 			%tr
-				%td
-					= user.id
-				%td
-					= link_to user.username, user
-				%td
-					= user.email
-				%td
-					= user.last_sign_in_at.to_s(:short)
+				%th.align
+					Ім'я
+				%th.align
+					Останній візит
+				%th.align 
+					Профіль	користувача
+				%tr
+					%td.align
+						= user.username	
+					%td.align
+						= user.last_sign_in_at.to_s(:short)	
+					%td.align
+						= link_to 'Перейти', user, class: 'btn btn-info pull-right view-btn btn-block'
