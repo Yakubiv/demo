@@ -3,4 +3,5 @@ class Post < ActiveRecord::Base
 	has_many :favoriters, through: :favorites
 	has_many :favorites
 	validates :user_id, presence: true
+	has_many :comments
 end

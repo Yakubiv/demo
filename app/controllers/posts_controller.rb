@@ -25,12 +25,15 @@ class PostsController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
-    @post = @user.posts.find(params[:id])  
+    @post = @user.posts.find(params[:id])
+    @comment = @post.comments.create(params[:comment])
+    @comment.user_id = current_user.id
+    @comment.save
+    
     
   end
 
   def create
-    @comment = 
     @user = User.find_by_email(params[:id])
     @post = Post.new(post_params)
     if @post.save
@@ -53,6 +56,7 @@ class PostsController < ApplicationController
   end
 
   private
+
 
     def post_params
       params.require(:post).permit(:user_id, :title, :content)

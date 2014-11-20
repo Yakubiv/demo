@@ -15,10 +15,12 @@ Rails.application.routes.draw do
   resource :progress
   resource :setting
   resource :invite
-  resource :comment
+  resource :comments, only: [:show]
   resources :posts, only: [:index, :new, :update, :create]
   resources :users, :only => [:show], path: '' do
-    resources :posts, path: '', only: [:show, :destroy, :edit]
+    resources :posts, path: '', only: [:show, :destroy, :edit] do
+      resources :comments, shallow: true
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
