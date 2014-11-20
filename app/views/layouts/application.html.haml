@@ -25,11 +25,12 @@
               %form
                 %input{type: "search", placeholder:"Шукати"}
           %section.resource.scrollable
-            #content.scroll
+            .container
               = yield
             %footer#footer
-              %div &copy 2014 Шпора
-              .counter
+              .text
+                &copy 2014 Шпора
+              .counter-1
                 %small
                   #{User.count}
                 :javascript
@@ -43,7 +44,7 @@
                   "' alt='' title='LiveInternet: показано число посетителей за"+
                   " сегодня' "+
                   "border='0' width='88' height='15'><\/a>")
-
+  
 
 
                     
@@ -55,7 +56,8 @@
       = yield
       %hr
       %footer#footer
-        %div &copy 2014 Шпора
+        .text
+          &copy 2014 Шпора
         .counter
           %small
             #{User.count}
@@ -70,4 +72,4 @@
             "' alt='' title='LiveInternet: показано число посетителей за"+
             " сегодня' "+
             "border='0' width='88' height='15'><\/a>")
-    
+  

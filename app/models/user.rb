@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   has_many :favorites
   has_many :favorite_posts, through: :favorites, source: :post
   validates :username, presence: true
+  
 end
