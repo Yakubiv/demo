@@ -25,4 +25,11 @@
 			%p
 				= raw(@post.content)
 	.panel
-		= render 'comments/form'
+		.panel-body
+			.col-sm-1
+				%a.thumbnail{href: user_path(current_user)}
+					=image_tag "unknow.gif"
+				%em.user-name-align
+					= current_user.username	
+			.col-sm-11
+				= render 'comments/form'

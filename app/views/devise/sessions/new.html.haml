@@ -3,6 +3,7 @@
     .col-md-4.col-md-offset-2
       .form-group
         %h2 Зайти на шпору
+        = devise_error_messages!
         = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
           .form-group
             = f.email_field :email, :autofocus => true, class: 'form-control', :placeholder => "Email"

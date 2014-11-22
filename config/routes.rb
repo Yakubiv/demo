@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resource :activites
   resource :progress
   resource :setting
-  resource :invite
+  resource :invite, path: 'users'
   resource :comments, only: [:show]
   resources :posts, only: [:index, :new, :update, :create]
   resources :users, :only => [:show], path: '' do
