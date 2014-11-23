@@ -1,6 +1,8 @@
+
 = form_for([@user, @post, @post.comments.build]) do |f| 
 	= f.hidden_field :user_id, value: current_user.id 
 	= f.hidden_field :post_id, value: @post.id
-	.form-group
-		= f.text_area :content, placeholder: 'Написати коментар', class: 'form-control'
-	= f.submit 'Готово', class: 'btn btn-success'
+	.col-sm-10
+		= f.text_area :content, placeholder: 'Написати коментар', class: 'form-control', rows: 4
+	.col-sm-2
+		= f.submit 'Готово', class: ' thumbnail comment-btn'
