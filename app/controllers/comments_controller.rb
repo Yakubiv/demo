@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 	before_filter :authenticate_user!
-	before_filter :find_post
+
 
 	def new
 		@comment = Comment.new
@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
 
 	def create
 		@user = User.find(params[:user_id])
+		@post = Post.find(params[:post_id])
 	    @comment = @post.comments.build(comment_params)
 	    @comment.user_id = current_user.id
 	    if @comment.save
@@ -25,7 +26,4 @@ private
 		params.require(:comment).permit(:content, :user_id, :post_id)
 	end
 
-	def find_post
-		@post = Post.find(params[:post_id])
-	end
 end
