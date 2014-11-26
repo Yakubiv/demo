@@ -20,6 +20,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @recent_posts = Post.order("created_at desc").limit(10).offset(0)
 
   end
 

@@ -1,4 +1,11 @@
 = content_for(:title, "Редагування")
-.col-lg-12
-	%h1 Редагування шпори
+.col-lg-9
+	%h1.wrapper Редагування шпори
 	= render 'posts/form'
+.col-lg-3
+	%h3.align Нещодавно додані
+	%hr
+	.panel
+		- @recent_posts.each do |page|
+			%h4.align
+				= link_to page.title, user_post_path(page.user, page)
