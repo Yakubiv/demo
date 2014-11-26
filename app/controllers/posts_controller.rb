@@ -10,7 +10,6 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @comment = comment.new
     @user = User.find_by_email(params[:id])
     @recent_posts = Post.order("created_at desc").limit(10).offset(0)
     if user_signed_in?
@@ -27,7 +26,7 @@ class PostsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
-    @comment = Post.find(params[:id]).comments.build(params[:comment])
+    
     
   end
 

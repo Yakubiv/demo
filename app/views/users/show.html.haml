@@ -17,8 +17,7 @@
 							%li
 								= link_to(fa_icon('edit', title:'Редагувати'), edit_user_post_path(post.user, post), class: "btn btn-lg navbar-btn")
 		- else
-			.panel
-				%h4 У вас поки що немає шпаргалок!
+			%h4 У вас поки що немає шпаргалок!
 	.col-lg-3
 		%h2 Улюблені
 		%hr
@@ -32,9 +31,8 @@
 			%h5 Ви ще не добавили сюди жодної шпаргалки. 
 - else
 	.col-lg-9
-		%h3.align Шпори користувача
-		%hr
-		= @user.username
+		%h3.align Шпори користувача - #{@user.username}
+		%hr	
 		- if @user.posts.any?
 			- @user.posts.each do |post|
 				.panel
@@ -58,14 +56,13 @@
 		%h3 Улюблені
 		%hr
 		- if @user.favorites.any?
-			- @user.favorite_posts.each do |post|
-				.panel
-					.panel-body
-						%h4
-							= post.title
-					.panel-footer.bg-light.lter
-						.nav.nav-pills
-							= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info btn-sm btn-block'
+			.panel.wrapper
+				- @user.favorite_posts.each do |post|
+					%ul
+						%li
+							%h4
+								= link_to post.title,user_post_path(post.user, post)
+				
 
 		- else
 			%h3 Користувач не додав жодної шпори в улюблені. 

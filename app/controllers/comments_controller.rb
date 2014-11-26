@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
 			flash[:notice] = "Comment has been created."
 			redirect_to user_post_path(@user, @post)
 		else
+			redirect_to user_post_path(@user, @post)
 			flash[:alert] = "Comment has not been created."
 
 		end
