@@ -8,12 +8,18 @@
 				.panel-body
 					%h3.clearfix.m-b
 						= post.title
+					%hr
+					%p
+						= strip_tags(post.content).truncate(300)
 				.panel-footer.bg-light.lter
 					.nav.nav-pills
-						= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info pull-right view-btn'
+						
 						- if current_user == post.user
+							= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info pull-right view-btn'
 							= link_to(fa_icon('trash', title: 'Delete'), post, confirm: 'Are you sure?', method: :delete, class: 'btn navbar-btn ')
+							= link_to(fa_icon('edit', title:'Редагувати'), edit_user_post_path(post.user, post), class: "btn navbar-btn")
 						- else
+							= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info pull-right '
 							- if current_user.favorites.find_by_post_id(post.id)
 								%i.fa.fa-star.view-btn.favorite{ data: {post_id: post.id, user_email: current_user.id} } 
 							- else
@@ -29,12 +35,21 @@
 		= will_paginate @posts
 
 - else
-	.container.theme-showcase.welcome
+	.container.align
+		
 		.row
-			.jumbotron.panel
-				%h1 Шпора
-				%p Перший українськомовний сервіс для студентів та школярів
-				%p який допоможе здати всі екзамени та написати контрольні на відмінно :)
-				%p Для цього потрібно лише зареєструватися!
-				%p Зараз тут #{Post.count} шпор на різні теми, добавляй свою!
-				= link_to 'Почати', new_user_registration_path, class: "btn btn-success"
+			.col-lg-4
+				%h3 Вхід
+				= render 'layouts/auth'
+			.col-lg-4
+				%h3 Недавно додані
+				#post-list
+					- @recent_posts.each do |page|
+						%p.align
+							= page.title				
+			.col-lg-4
+				%h3 Реєстрація
+				= render 'layouts/reg'
+		.row
+			.col-lg-12
+				%h3.align Щоб переглянути шпаргалки ввійдіть на сайт! :)

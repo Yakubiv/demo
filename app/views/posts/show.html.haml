@@ -35,4 +35,19 @@
 					= current_user.username	
 			.col-sm-11.wrapper
 				= render 'comments/form'
-	
+	.panel
+		.left-align
+			%h3 Коментарі
+		- if @post.comments.any?
+			- @post.comments.each do |c|
+				.row
+					.panel-body
+						.col-sm-1
+							%a.thumbnail{href: user_path(@user)}
+								=image_tag "unknow.gif"
+						.col-sm-11
+							%em.user-name-align-list #{c.user_id} - #{c.created_at}
+							
+							%p
+								= c.content
+						

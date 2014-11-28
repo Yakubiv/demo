@@ -1,0 +1,12 @@
+- @comments.each do |c|
+	.row
+		.panel-body
+			.col-sm-1
+				%a.thumbnail{href: user_path(@user)}
+					=image_tag "unknow.gif"
+			.col-sm-11
+				%em.user-name-align-list #{User.find_by_id(c.user_id).username} - #{c.created_at}
+				
+				%p
+					= c.content
+						

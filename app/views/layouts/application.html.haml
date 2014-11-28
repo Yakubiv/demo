@@ -50,9 +50,13 @@
                     
   - else
     %section.vbox
-      %header.header.bg-light.lter.b-b
-        = image_tag "logo_m.png", class: "navbar-brand logo"
-        = render 'layouts/registration'
+      #top
+      #header
+        .inside
+          #logo
+            .text
+              = Post.count
+          %h1.align.title Шпаргалок на сайті!!!
       = yield
       %hr
       %footer#footer

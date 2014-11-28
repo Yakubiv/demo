@@ -1,6 +1,20 @@
 class DemoPageController < ApplicationController
+  
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
+
   def index
-  	@recent_posts = Post.order("created_at desc").limit(10).offset(0)
+  	@recent_posts = Post.order("created_at desc").limit(5).offset(0)
     if user_signed_in?
       @recent_user_post = current_user.posts.order("created_at desc").limit(4).offset(0)
     end
