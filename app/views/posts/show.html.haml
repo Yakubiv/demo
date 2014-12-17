@@ -11,28 +11,28 @@
 				= link_to(fa_icon('edit', title:'Редагувати'), edit_user_post_path(@user, @post), class: "btn btn-lg navbar-btn")
 			-else
 				%h4 Творець #{link_to @post.user.username, user_path(@user)}
+				%p Created  #{time_ago_in_words(@post.created_at)}
 			- if current_user != @user && user_signed_in?
 				- if current_user.favorites.find_by_post_id(@post.id)
-					%i.fa.fa-star.favorite#make-favorite{ data: {post_id: @post.id, user_email: current_user.id} } 
+					%i.fa.fa-star.favorite#make-favorite{ data: {post_id: @post.id, user_id: current_user.id} } 
 						%span 
 							= " " + "Додано в улюблені"
 				- else
-					%i.fa.fa-star.unfavorite#make-favorite{ data: {post_id: @post.id, user_email: current_user.id} }
+					%i.fa.fa-star.unfavorite#make-favorite{ data: {post_id: @post.id, user_id: current_user.id} }
 						%span 
 							= " " + "В улюблені!"
-			%p Created  #{time_ago_in_words(@post.created_at)}
 			%hr
-			%p
-				= raw(@post.content)
+			.main-font
+				%p
+					= raw(@post.content)
 	.panel
-		.left-align
+		.align
 			%h3 Написати коментар
 		.panel-body
 			.col-sm-1.wrapper
-				%a.thumbnail{href: user_path(current_user)}
-					=image_tag "unknow.gif"
-				%em.user-name-align
-					= current_user.username	
+				%a{href: user_path(current_user)}
+					= gravatar_image_tag('petro@gmail.com'.gsub('spam', 'mdeering'), class: 'gravatar')
+				%p.user-name-align= current_user.username	
 			.col-sm-11.wrapper
 				= render 'comments/form'
 	.panel
@@ -43,10 +43,10 @@
 				.row
 					.panel-body
 						.col-sm-1
-							%a.thumbnail{href: user_path(@user)}
-								=image_tag "unknow.gif"
+							%a{href: user_path(@user)}
+								= gravatar_image_tag('petro@gmail.com'.gsub('spam', 'mdeering'))
 						.col-sm-11
-							%em.user-name-align-list #{c.user_id} - #{c.created_at}
+							%em.user-name-align #{c.user_id} - #{c.created_at}
 							
 							%p
 								= c.content

@@ -2,14 +2,19 @@
 	.col-lg-8.col-lg-offset-2
 		%table.table
 			%tr
+				%th.align ABA
 				%th.align Ім'я
 				%th.align Останній візит
 				%th.align Профіль	користувача
 				- @users.each do |user|
 					%tr
 						%td.align
-							= user.username	
+							= image_tag avatar_url(user)
 						%td.align
-							= user.last_sign_in_at.to_s(:short)	
+							%h3
+								= user.username	
 						%td.align
-							= link_to 'Перейти', user, class: 'btn btn-info pull-right view-btn btn-block'
+							%h3
+								= user.last_sign_in_at.to_s(:short)	
+						%td.align
+							= link_to 'Перейти', user, class: 'btn btn-info btn-block'

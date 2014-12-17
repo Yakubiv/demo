@@ -14,11 +14,12 @@ class DemoPageController < ApplicationController
 
 
   def index
-  	@recent_posts = Post.order("created_at desc").limit(5).offset(0)
+    @posts = Post.paginate(page: params[:page], per_page: 6)
+    @user = User.find_by_email(params[:id])
     if user_signed_in?
       @recent_user_post = current_user.posts.order("created_at desc").limit(4).offset(0)
     end
-  	@posts = Post.paginate(page: params[:page], per_page: 6)
+  	@recent_posts = Post.order("created_at desc").limit(5).offset(0)
   	respond_to do |format|
       format.json
       format.html          # /app/views/home/index.html.erb

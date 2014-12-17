@@ -1,0 +1,10 @@
+-@user ||= current_user
+.btn-group.btn-group-justified
+	%a.btn.btn-primary{ href: following_user_path(@user)} 
+		following
+		.badge
+			= @user.following.count
+	%a.btn.btn-primary{ href: followers_user_path(@user)}
+		followers
+		.badge
+			= @user.followers.count

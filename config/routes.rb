@@ -8,18 +8,21 @@ Rails.application.routes.draw do
   post ':user_id/favorites/:post_id', to: 'favorites#create', as: :new_favorite
   delete ':user_id/favorites/:post_id', to: 'favorites#destroy', as: :delete_favorite
   get ':user_id/favorites', to: 'favorites#index', as: :favorites
-  resource :profile
-  resource :path
-  resource :map 
-  resource :activites
-  resource :progress
-  resource :setting
-  resource :invite, path: 'users'
-  resource :comments, only: [:show]
+  resource :profile, only: [:show]
+  resource :path, only: [:show]
+  resource :map , only: [:show]
+  resource :activites, only: [:show]
+  resource :progress, only: [:show]
+  resource :setting, only: [:show]
+  resource :invite, path: 'users', only: [:show]
   resources :posts, only: [:index, :new, :update, :create]
   resources :users, :only => [:show], path: '' do
+    resources :relationships, only: [:create, :destroy]
+    member do 
+      get :following, :followers
+    end
     resources :posts, path: '', only: [:show, :destroy, :edit] do
-      resources :comments, shallow: true
+      resources :comments, only: [:create]
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

@@ -158,8 +158,8 @@ input[type=search] {
               
 }
 .comment-btn{
-  height: 94px !important;
-  width: 94px;
+  margin-top: 10px;
+  width: 100%;
 }
 
 .left-align{
@@ -176,25 +176,12 @@ input[type=search] {
   width: 900px;
 }
 
-.thumbnail {
-  display: block;
-  padding: 0px;
-  margin-bottom: 6px;
-  line-height: 17.428571;
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
-  height: 54px;
-  border-radius: -2px;
-  -webkit-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-}
+
 
 .user-name-align{
   font-size: large;
-}
-.user-name-align-list{
-  font-size: large;
+  text-align: center;
+  padding-top: 10px;
 }
 
 .panel{
@@ -206,6 +193,21 @@ input[type=search] {
     width: 150px;
   }
   .view-btn{
+    position: relative;
+    top: 0px;
+  }
+
+  .view-btn-1{
+    position: relative;
+    top: 3px;
+  }
+
+  .view-btn-2{
+    position: relative;
+    top: 8px;
+  }
+
+  .star-sm{
     position: relative;
     top: 8px;
   }
@@ -223,6 +225,22 @@ input[type=search] {
 .align{
   text-align: center;
 }
+
+.follow {
+  color: gold;
+}
+
+#make-follow {
+  font-size: 33px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  span {
+    color: #333;
+    font-size: 20px;
+  }
+}
+
+
 
 .favorite {
   color: gold;
@@ -289,17 +307,72 @@ font-size: 22px;
   }
 }
 
+.gravatar{
+  width: 60px;
+}
+
+.comment-form{
+  height: 80px !important;
+}
+
+.btn{
+  border-radius: 0px !important;
+}
+
+.follow-btn{
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.stats{
+  padding-top: 10px;
+}
+
+.main-font{
+  font-family: initial;
+  font-size: 20px !important;
+}
+
 #top{
   height: 24px;
   background: image-url('top-bg.png') repeat-x top;
 }
 
+.m-t-xl{
+  margin-top: 40px;
+}
+
+.people {
+  .user{
+    position: relative;
+    padding: 10px;
+    text-align: left;
+    background: white;
+    margin-bottom: 30px;
+    vertical-align: top;
+    border-radius: 2px;
+    border: 1px solid #eee;
+    min-height: 165px;
+    .foto{
+      width: 100%;
+      min-height: 150px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.wrapper-sm{
+  padding: 10px;
+}
+
 body {
+  font-family: 'Comfortaa',cursive, !important;
   padding: 0;
   margin: 0;
   height: 100%;
   background: url('http://static.tumblr.com/vv8cdma/Ddzm1ypam/chruch.png') repeat fixed;
-  color: #fff;
+  color: #3b5065;
 }
 
 #slide_button {

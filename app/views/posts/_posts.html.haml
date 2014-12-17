@@ -1,4 +1,3 @@
-= content_for(:title, "Шпаргалки")
 .col-lg-9
 	%h3.align Шпаргалки
 	%hr
@@ -14,16 +13,17 @@
 				.nav.nav-pills
 					
 					- if current_user == post.user
-						= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info pull-right view-btn'
+						= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info pull-right view-btn-2'
 						= link_to(fa_icon('trash', title: 'Delete'), post, confirm: 'Are you sure?', method: :delete, class: 'btn navbar-btn ')
 						= link_to(fa_icon('edit', title:'Редагувати'), edit_user_post_path(post.user, post), class: "btn navbar-btn")
 					- else
 						= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info pull-right '
 						- if current_user.favorites.find_by_post_id(post.id)
-							%i.fa.fa-star.view-btn.favorite{ data: {post_id: post.id, user_email: current_user.id} } 
+							%i.fa.fa-star.star-sm.favorite{ data: {post_id: post.id, user_email: current_user.id} } 
 						- else
-							%i.fa.fa-star.view-btn.unfavorite{ data: {post_id: post.id, user_email: current_user.id} }
-				
+							%i.fa.fa-star.star-sm.unfavorite{ data: {post_id: post.id, user_email: current_user.id} }
+	.align
+		= will_paginate @posts	
 .col-lg-3
 	%h3.align Нещодавно додані
 	%hr
@@ -31,5 +31,4 @@
 		- @recent_posts.each do |page|
 			%h4.align
 				= link_to page.title, user_post_path(page.user, page)
-.align
-	= will_paginate @posts
+

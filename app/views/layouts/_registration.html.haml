@@ -1,8 +1,3 @@
 - if user_signed_in?
 	.link-out	
 		= link_to "Вийти", destroy_user_session_path, method: :delete, class: "btn btn-danger"
-- else
-	.link-in
-		= link_to "Ввійти", new_user_session_path, class: "btn btn-primary"
-	.link-up
-		= link_to "Зареєструватися", new_user_registration_path, class: "btn btn-success"

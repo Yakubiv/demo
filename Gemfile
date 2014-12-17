@@ -28,6 +28,7 @@ gem 'font-awesome-rails'
 gem 'devise'
 gem 'will_paginate'
 gem 'ckeditor_rails'
+gem 'gravatar_image_tag'
 
 group :production do
   gem 'rails_12factor'

@@ -9,6 +9,22 @@ class UsersController < ApplicationController
     @posts = @user.posts.all
   end
 
+  def following
+    @title = "Following"
+    @header = 'Following'
+    @user  = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @header = 'Followers'
+    @user  = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
 
   def search
   	@user = User.find_by_email(user_params)

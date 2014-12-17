@@ -1,0 +1,31 @@
+- provide(:title, @title)
+%h2.align
+	= @header
+- if @users.any?
+	.m-t-xl
+		.people
+			.row
+				- @users.each do |user|
+					.col-sm-4.col-lg-3
+						.user
+							.row
+								.col-xs-8.col-sm-offset-2
+									%a{href: user_path(user)}
+										= image_tag 'unknow.gif', class: 'foto img-circle'
+							.row.align
+								.col-xs-12
+									%h2
+										%a{href: user} 
+											= user.username
+							.row.align.wrapper-sm
+								.col-xs-12
+									.btn-group.btn-group-justified
+										%a.btn.btn-primary{ href: following_user_path(user)} 
+											following
+											.badge
+												= user.following.count
+										%a.btn.btn-primary{ href: followers_user_path(user)}
+											followers
+											.badge
+												= user.followers.count
+							= will_paginate

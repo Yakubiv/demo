@@ -1,7 +1,7 @@
 = content_for(:title, "Сторінка користувача #{@user.username}")
 -if current_user == @user
 	.col-lg-9
-		%h2.align Мої шпаргалки
+		%h3.align Мої шпаргалки
 		%hr
 		- if @user.posts.any?
 			- @user.posts.each do |post|
@@ -10,28 +10,31 @@
 						%h3.clearfix.m-b
 							= post.title
 					.panel-footer.bg-light.lter
-						= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info pull-right view-btn btn-block'
+						= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info pull-right view-btn-1'
 						.nav.nav-pills
 							%li
-								= link_to(fa_icon('trash', title: 'Видалити'), post, confirm: 'Ви впевнені?', method: :delete, class: 'btn btn-lg navbar-btn')
+								= link_to(fa_icon('trash', title: 'Видалити'), post, confirm: 'Ви впевнені?', method: :delete, class: 'btn btn-sm')
 							%li
-								= link_to(fa_icon('edit', title:'Редагувати'), edit_user_post_path(post.user, post), class: "btn btn-lg navbar-btn")
+								= link_to(fa_icon('edit', title:'Редагувати'), edit_user_post_path(post.user, post), class: "btn btn-sm")
 		- else
-			%h4 У вас поки що немає шпаргалок!
+			%h4.align У вас поки що немає шпаргалок!
 	.col-lg-3
-		%h2 Улюблені
+		%h3.align Мої підписники
 		%hr
+		.panel.wrapper
+			= render 'shared/stats'
+		%h3.align Улюблені
 		- if @user.favorites.any?
-			.panel
+			.panel.wrapper
 				- @user.favorite_posts.each do |post|
 					%h4
 						= link_to post.title, user_post_path(post.user, post)
 						= link_to '', delete_favorite_path(current_user.id, post.id), method: :delete, class: "fa fa-trash-o btn-lg"
 		- else
-			%h5 Ви ще не добавили сюди жодної шпаргалки. 
+			%h5.align Ви ще не добавили сюди жодної шпаргалки. 
 - else
 	.col-lg-9
-		%h3.align Шпори користувача - #{@user.username}
+		%h3.align Шпори користувача
 		%hr	
 		- if @user.posts.any?
 			- @user.posts.each do |post|
@@ -47,22 +50,25 @@
 								= link_to(fa_icon('trash', title: 'Delete'), post, confirm: 'Are you sure?', method: :delete, class: 'btn navbar-btn')
 							- else
 								- if current_user.favorites.find_by_post_id(post.id)
-									%i.fa.fa-star.view-btn.favorite{ data: {post_id: post.id, user_email: current_user.id} } 
+									%i.fa.fa-star.star-sm.favorite{ data: {post_id: post.id, user_email: current_user.id} } 
 								- else
-									%i.fa.fa-star.view-btn.unfavorite{ data: {post_id: post.id, user_email: current_user.id} }
+									%i.fa.fa-star.star-sm.unfavorite{ data: {post_id: post.id, user_email: current_user.id} }
 		- else
-			%h3 Користувач покищо не додав шпаргалок
+			%h4.align Користувач поки не додав шпаргалок.
 	.col-lg-3
-		%h3 Улюблені
+		%h3.align #{@user.username}
+		%hr
+		= render 'follow_form'
+		.stats
+			= render 'shared/stats'
+		%h3.align Улюблені
 		%hr
 		- if @user.favorites.any?
 			.panel.wrapper
 				- @user.favorite_posts.each do |post|
-					%ul
-						%li
-							%h4
-								= link_to post.title,user_post_path(post.user, post)
+					%h4
+						= link_to post.title,user_post_path(post.user, post)
 				
 
 		- else
-			%h3 Користувач не додав жодної шпори в улюблені. 
+			%h4.align Користувач не додав жодної шпори в улюблені. 

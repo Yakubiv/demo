@@ -1,10 +1,10 @@
 %header.header.bg-black.lt
-  %a{ href: "/", title: "Home page"}
+  %a{ href: posts_path, title: "Home page"}
     = image_tag "logo_m.png", class: "navbar-brand logo"
 %section.scrollable 
   #menu-box
     .wrapper
-      =image_tag "unknow.gif", class: "img-circle"
+      = gravatar_image_tag('petro@gmail.com'.gsub('spam', 'mdeering'))
       %span.text 
         = current_user.username
       = link_to"Створити шпору",new_post_path, class:"btn btn-my"
