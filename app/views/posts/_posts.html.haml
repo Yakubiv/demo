@@ -7,7 +7,7 @@
 				%h3.clearfix.m-b
 					= post.title
 				%hr
-				%h5 created by #{post.user.username} #{time_ago_in_words(post.created_at)} ago
+				%h5 created by #{link_to post.user.username, user_path(post.user)} #{time_ago_in_words(post.created_at)} ago
 				%hr
 				%p
 					= strip_tags(post.content).truncate(300)
