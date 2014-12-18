@@ -4,4 +4,6 @@ class Post < ActiveRecord::Base
 	has_many :favorites, dependent: :destroy
 	validates :user_id, presence: true
 	has_many :comments, dependent: :destroy
+
+	default_scope {order('created_at DESC')}
 end
