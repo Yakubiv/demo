@@ -16,6 +16,7 @@ class DemoPageController < ApplicationController
   def index
     @posts = Post.paginate(page: params[:page], per_page: 6)
     @user = User.find_by_email(params[:id])
+    @tags = Post.tag_counts_on(:tags)
     if user_signed_in?
       @recent_user_post = current_user.posts.order("created_at desc").limit(4).offset(0)
     end
