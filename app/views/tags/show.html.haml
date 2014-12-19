@@ -1,8 +1,8 @@
 = content_for(:title, "Шпори. Розділ #{@tag} | Шпора")
 %h1
   \##{@tag}
-- @posts.each do |post|
-  .panel.wrapper-sm
+.panel.wrapper-sm
+  - @posts.each do |post|
     %h2
       = link_to post.title, user_post_path(post.user, post)
     %hr
