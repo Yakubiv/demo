@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resource :map , only: [:show]
   resource :activites, only: [:show]
   resource :progress, only: [:show]
+  resources :tags, only: [:index, :show]
   resource :setting, only: [:show]
   resource :invite, path: 'users', only: [:show]
   resources :posts, only: [:index, :new, :update, :create]

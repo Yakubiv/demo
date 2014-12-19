@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     if user_signed_in?
       @recent_user_post = current_user.posts.order("created_at desc").limit(4).offset(0)
     end
+    @tags = Post.tag_counts_on(:tags)
   end
 
   def new
@@ -57,6 +58,6 @@ class PostsController < ApplicationController
 
 
     def post_params
-      params.require(:post).permit(:user_id, :title, :content)
+      params.require(:post).permit(:user_id, :title, :content, :tag_list)
     end
 end

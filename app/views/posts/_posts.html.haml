@@ -33,4 +33,7 @@
 		- @recent_posts.each do |page|
 			%h4.align
 				= link_to page.title, user_post_path(page.user, page)
+	%h3.align Категорії
+	.panel.wrapper-sm
+		= render 'layouts/tag_cloud'
 

@@ -29,6 +29,7 @@ gem 'devise'
 gem 'will_paginate'
 gem 'ckeditor_rails'
 gem 'gravatar_image_tag'
+gem 'acts-as-taggable-on'
 
 group :production do
   gem 'rails_12factor'

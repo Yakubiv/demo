@@ -25,13 +25,16 @@
 			= render 'shared/stats'
 		%h3.align Улюблені
 		- if @user.favorites.any?
-			.panel.wrapper
+			.panel.wrapper-sm
 				- @user.favorite_posts.each do |post|
 					%h4
 						= link_to post.title, user_post_path(post.user, post)
 						= link_to '', delete_favorite_path(current_user.id, post.id), method: :delete, class: "fa fa-trash-o btn-lg"
 		- else
 			%h5.align Ви ще не добавили сюди жодної шпаргалки. 
+		%h3.align Категорії
+		.panel.wrapper-sm
+			= render 'layouts/tag_cloud'
 - else
 	.col-lg-9
 		%h3.align Шпори користувача
@@ -72,3 +75,6 @@
 
 		- else
 			%h4.align Користувач не додав жодної шпори в улюблені. 
+		%h3.align Категорії
+		.panel.wrapper-sm
+			= render 'layouts/tag_cloud'

@@ -6,4 +6,6 @@
 	%p
 		= p.text_area :content, placeholder: 'Вміст шпори', class: 'form-control ckeditor', rows:  10, cols: 60
 	%p
+		= p.text_field :tag_list, placeholder: 'Каткгорія', class: 'form-control'
+	%p
 		= p.submit 'Готово', class: ' btn btn-my'
