@@ -19,6 +19,18 @@
 		- else
 			%h4.align У вас поки що немає шпаргалок!
 	.col-lg-3
+		%h3.align Змінити аватарку
+		%hr
+		= form_for @user do |f|
+			.form-group.align
+				= image_tag @user.avatar.thumb, class: 'img-thumb'
+			.form-group
+				= f.file_field :avatar, class: 'form-control'  
+			.form-group.align
+				- if @user.avatar.present?
+					= f.submit 'Змінити аватарку', class: 'btn btn-success'
+				- else
+					= f.submit ' Завантажити аватарку', class: 'btn btn-success'
 		%h3.align Мої підписники
 		%hr
 		.panel.wrapper
@@ -38,7 +50,7 @@
 - else
 	.col-lg-9
 		%h3.align Шпори користувача
-		%hr	
+		%hr 
 		- if @user.posts.any?
 			- @user.posts.each do |post|
 				.panel
@@ -64,6 +76,10 @@
 		= render 'follow_form'
 		.stats
 			= render 'shared/stats'
+		%h3.align Аватарка
+		%hr
+		.form-group
+			= image_tag @user.avatar.thumb
 		%h3.align Улюблені
 		%hr
 		- if @user.favorites.any?

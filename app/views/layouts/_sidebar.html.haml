@@ -4,7 +4,7 @@
 %section.scrollable 
   #menu-box
     .wrapper
-      = gravatar_image_tag('petro@gmail.com'.gsub('spam', 'mdeering'))
+      = image_tag current_user.avatar, class: 'img img-circle'
       %span.text 
         = current_user.username
       = link_to"Створити шпору",new_post_path, class:"btn btn-my"

@@ -4,6 +4,7 @@ class InvitesController < ApplicationController
   end
 
   def show
-  	@users = User.order(created_at: :desc)
+  	@users = User.paginate(page: params[:page], per_page: 12)
+  	@header = 'Населення'
   end
 end

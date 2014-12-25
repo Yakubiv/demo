@@ -30,6 +30,10 @@ gem 'will_paginate'
 gem 'ckeditor_rails'
 gem 'gravatar_image_tag'
 gem 'acts-as-taggable-on'
+gem 'carrierwave'
+gem 'fog'
+gem 'mini_magick'
+
 
 group :production do
   gem 'rails_12factor'

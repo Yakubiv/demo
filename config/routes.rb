@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resource :setting, only: [:show]
   resource :invite, path: 'users', only: [:show]
   resources :posts, only: [:index, :new, :update, :create]
-  resources :users, :only => [:show], path: '' do
+  resources :users, :only => [:show, :update], path: '' do
     resources :relationships, only: [:create, :destroy]
     member do 
       get :following, :followers

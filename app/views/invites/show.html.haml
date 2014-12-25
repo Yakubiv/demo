@@ -1,20 +1,29 @@
-#users-list
-	.col-lg-8.col-lg-offset-2
-		%table.table
-			%tr
-				%th.align ABA
-				%th.align Ім'я
-				%th.align Останній візит
-				%th.align Профіль	користувача
-				- @users.each do |user|
-					%tr
-						%td.align
-							= image_tag avatar_url(user)
-						%td.align
-							%h3
-								= user.username	
-						%td.align
-							%h3
-								= user.last_sign_in_at.to_s(:short)	
-						%td.align
-							= link_to 'Перейти', user, class: 'btn btn-info btn-block'
+%h2.align
+	= @header
+
+.m-t-xl
+	.people
+		.row
+			- @users.each do |user|
+				.col-sm-4.col-lg-3
+					.user
+						.row
+							.col-xs-8.col-sm-offset-2
+								-if user.avatar.present?
+									= user.avatar
+								- else
+									%a{href: user_path(user)}
+										= image_tag 'unknow.gif', class: 'foto img-circle'
+						.row
+							.col-xs-12
+								%h2.align
+									%a{href: user_path(user)} 
+										= user.username
+						.row
+							.col-xs-12
+								%h4.align Amound of pages: #{user.posts.count}
+						.row.align.wrapper-sm
+							.col-xs-12
+								.btn-group.btn-group-justified
+									= link_to 'Перейти', user, class: 'btn btn-info btn-block'
+				= will_paginate @users

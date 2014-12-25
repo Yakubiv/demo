@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   
+  mount_uploader :avatar, AvatarUploader
+  
   validates :username, presence: true
   
   has_many :posts, dependent: :destroy

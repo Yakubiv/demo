@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   
+  def new
+    
+  end
+
   def index
     @users = User.order(created_at: :desc)
   end
@@ -8,6 +12,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.all
     @tags = Post.tag_counts_on(:tags)
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update_attributes(user_params)
+    redirect_to :back, notice: 'Аватар змінено'
   end
 
   def following
@@ -35,6 +45,6 @@ class UsersController < ApplicationController
   private
   
     def user_params
-      params.require(:user).permit(:email, :username)
+      params.require(:user).permit(:email, :username, :avatar)
     end
 end
