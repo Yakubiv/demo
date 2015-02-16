@@ -5,15 +5,20 @@ class Post < ActiveRecord::Base
 	has_many :favorites, dependent: :destroy
 	has_many :comments, dependent: :destroy
 
-    validates :user_id, presence: true
-    validates :tag_list, presence: false
-  	validate :validate_tag
+  validates :user_id, presence: true
+  validates :tag_list, presence: false
+	validate :validate_tag
 
-  	def validate_tag
-    	tag_list.each do |tag|
-      	errors.add(:tag, "должнен быть в пределе 3-15 символов") if tag.length > 15 || tag.length < 3
+	default_scope {order('created_at DESC')}
+
+  def self.search(query)
+    where('title ilike ? OR content ilike ?', "%#{query}%", "%#{query}%")
+  end
+
+  def validate_tag
+    tag_list.each do |tag|
+      errors.add(:tag, "должнен быть в пределе 3-15 символов") if tag.length > 15 || tag.length < 3
     end
   end
 
-	default_scope {order('created_at DESC')}
 end

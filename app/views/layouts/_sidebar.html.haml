@@ -4,10 +4,13 @@
 %section.scrollable 
   #menu-box
     .wrapper
-      = image_tag current_user.avatar, class: 'img img-circle'
+      - if current_user.avatar.present?
+        = image_tag current_user.avatar, class: 'img img-circle'
+      - else
+        = image_tag 'unknow.gif', class: 'img img-circle'
       %span.text 
         = current_user.username
-      = link_to"Створити шпору",new_post_path, class:"btn btn-my"
+      = link_to "Створити шпору", new_post_path, class:"btn btn-my"
     .nav-primary
       %ul.nav
         %li{class: "#{'active' if controller_name == 'posts'}"}

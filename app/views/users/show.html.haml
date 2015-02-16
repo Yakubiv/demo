@@ -1,8 +1,7 @@
 = content_for(:title, "Сторінка користувача #{@user.username}")
 -if current_user == @user
 	.col-lg-9
-		%h3.align Мої шпаргалки
-		%hr
+		%h3.page-header Мої шпаргалки
 		- if @user.posts.any?
 			- @user.posts.each do |post|
 				.panel
@@ -17,25 +16,24 @@
 							%li
 								= link_to(fa_icon('edit', title:'Редагувати'), edit_user_post_path(post.user, post), class: "btn btn-sm")
 		- else
-			%h4.align У вас поки що немає шпаргалок!
+			%h4.page-header У вас поки що немає шпаргалок!
 	.col-lg-3
-		%h3.align Змінити аватарку
-		%hr
+		%h3.page-header Змінити аватарку
 		= form_for @user do |f|
 			.form-group.align
 				= image_tag @user.avatar.thumb, class: 'img-thumb'
 			.form-group
-				= f.file_field :avatar, class: 'form-control'  
+				= f.file_field :avatar, class: 'form-control'
+				= f.hidden_field :avatar_cache
 			.form-group.align
 				- if @user.avatar.present?
 					= f.submit 'Змінити аватарку', class: 'btn btn-success'
 				- else
 					= f.submit ' Завантажити аватарку', class: 'btn btn-success'
-		%h3.align Мої підписники
-		%hr
+		%h3.page-header Мої підписники
 		.panel.wrapper
 			= render 'shared/stats'
-		%h3.align Улюблені
+		%h3.page-header Улюблені
 		- if @user.favorites.any?
 			.panel.wrapper-sm
 				- @user.favorite_posts.each do |post|
@@ -43,14 +41,13 @@
 						= link_to post.title, user_post_path(post.user, post)
 						= link_to '', delete_favorite_path(current_user.id, post.id), method: :delete, class: "fa fa-trash-o btn-lg"
 		- else
-			%h5.align Ви ще не добавили сюди жодної шпаргалки. 
-		%h3.align Категорії
+			%h5 Ви ще не добавили сюди жодної шпаргалки.
+		%h3.page-header Категорії
 		.panel.wrapper-sm
 			= render 'layouts/tag_cloud'
 - else
 	.col-lg-9
-		%h3.align Шпори користувача
-		%hr 
+		%h3.page-header Шпори користувача
 		- if @user.posts.any?
 			- @user.posts.each do |post|
 				.panel
@@ -65,32 +62,27 @@
 								= link_to(fa_icon('trash', title: 'Delete'), post, confirm: 'Are you sure?', method: :delete, class: 'btn navbar-btn')
 							- else
 								- if current_user.favorites.find_by_post_id(post.id)
-									%i.fa.fa-star.star-sm.favorite{ data: {post_id: post.id, user_email: current_user.id} } 
+									%i.fa.fa-star.star-sm.favorite{ data: {post_id: post.id, user_email: current_user.id} }
 								- else
 									%i.fa.fa-star.star-sm.unfavorite{ data: {post_id: post.id, user_email: current_user.id} }
 		- else
-			%h4.align Користувач поки не додав шпаргалок.
+			%h4 Користувач поки не додав шпаргалок.
 	.col-lg-3
-		%h3.align #{@user.username}
-		%hr
+		%h3.page-header #{@user.username}
 		= render 'follow_form'
 		.stats
 			= render 'shared/stats'
-		%h3.align Аватарка
-		%hr
-		.form-group
-			= image_tag @user.avatar.thumb
-		%h3.align Улюблені
-		%hr
+		%h3.page-header Аватарка
+		.form-group.align
+			= image_tag @user.avatar.big_thumb
+		%h3.page-header Улюблені
 		- if @user.favorites.any?
 			.panel.wrapper
 				- @user.favorite_posts.each do |post|
 					%h4
 						= link_to post.title,user_post_path(post.user, post)
-				
-
 		- else
-			%h4.align Користувач не додав жодної шпори в улюблені. 
-		%h3.align Категорії
+			%h4 Користувач не додав жодної шпори в улюблені.
+		%h3.page-header Категорії
 		.panel.wrapper-sm
 			= render 'layouts/tag_cloud'

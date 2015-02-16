@@ -1,6 +1,50 @@
 @import "bootstrap/mixins.less";
 @import "bootstrap/variables.less";
 
+
+.share-wrapper {
+  clear: both;
+  height: 0px;
+  position: fixed;
+  z-index: 999;
+}
+
+#feature-share {
+  position: absolute;
+  top: 60px;
+  display: block;
+  width: 70px;
+  left: 0px;
+  z-index: 99;
+  padding: 0px;
+}
+
+#feature-share li.title{
+  font-family: "Open Sans", "open-sans", sans-serif;
+  font: bold 11px/1em "Open Sans", "open-sans", sans-serif;
+  background: #323a45;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 20px 0;
+  position: relative;
+}
+
+#feature-share a {
+  display: block;
+  text-align: center;
+  padding: 15px 0;
+  color: #7e8890;
+  background: #f4f4f4;
+  font-size: 18px;
+}
+
+ul {
+  list-style: none;
+}
+
+
+
 #site-wrapper {
   position: relative;
   overflow: hidden;
@@ -139,27 +183,11 @@
   margin-right: 10px;
 }
 
+.search{
+  position: relative;
+  top: 8px;
+}
 
-#search-box{
-  display: flex;
-  position: absolute;
-  top: 13px;
-  left: 2%;
-  .m-box{
-    position: absolute;
-    top: 3px;
-    left: 2%;
-  }
-}
-input[type=search] { 
-    background:  no-repeat scroll 7px 7px;
-    padding-left:30px;
-    border: 0 none;
-    font: 12px "Arial",serif;
-    width: 150px;
-    padding: 6px 15px 6px 35px;
-              
-}
 .comment-btn{
   margin-top: 10px;
   width: 100%;
@@ -214,7 +242,7 @@ input[type=search] {
     position: relative;
     top: 8px;
   }
-  
+
 
   .user-logo{
     img{
@@ -379,7 +407,6 @@ body {
   padding: 0;
   margin: 0;
   height: 100%;
-  background: url('http://static.tumblr.com/vv8cdma/Ddzm1ypam/chruch.png') repeat fixed;
   color: #3b5065;
 }
 

@@ -1,6 +1,5 @@
 .col-lg-9
-	%h3.align Шпаргалки
-	%hr
+	%h3.page-header Шпаргалки
 	- @posts.each do |post|
 		.panel
 			.panel-body
@@ -13,7 +12,7 @@
 					= strip_tags(post.content).truncate(300)
 			.panel-footer.bg-light.lter
 				.nav.nav-pills
-					
+
 					- if current_user == post.user
 						= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info pull-right view-btn-2'
 						= link_to(fa_icon('trash', title: 'Delete'), post, confirm: 'Are you sure?', method: :delete, class: 'btn navbar-btn ')
@@ -21,19 +20,18 @@
 					- else
 						= link_to 'Подивитися', user_post_path(post.user, post), class: 'btn btn-info pull-right '
 						- if current_user.favorites.find_by_post_id(post.id)
-							%i.fa.fa-star.star-sm.favorite{ data: {post_id: post.id, user_email: current_user.id} } 
+							%i.fa.fa-star.star-sm.favorite{ data: {post_id: post.id, user_email: current_user.id} }
 						- else
 							%i.fa.fa-star.star-sm.unfavorite{ data: {post_id: post.id, user_email: current_user.id} }
 	.align
-		= will_paginate @posts	
+		= will_paginate @posts
 .col-lg-3
-	%h3.align Нещодавно додані
-	%hr
+	%h3.page-header Нещодавно додані
 	.panel
 		- @recent_posts.each do |page|
 			%h4.align
 				= link_to page.title, user_post_path(page.user, page)
-	%h3.align Категорії
+	%h3.page-header Категорії
 	.panel.wrapper-sm
 		= render 'layouts/tag_cloud'
 

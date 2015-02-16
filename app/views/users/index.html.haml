@@ -8,8 +8,8 @@
 				- @users.each do |user|
 					%tr
 						%td.align
-							= user.username	
+							= user.username
 						%td.align
-							= user.last_sign_in_at.to_s(:short)	
+							= user.last_sign_in_at.to_s(:short)
 						%td.align
 							= link_to 'Перейти', user, class: 'btn btn-info pull-right view-btn btn-block'

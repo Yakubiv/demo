@@ -6,7 +6,7 @@
     %meta{content: "shpora.me - это сервис для создания шпаргалок и других заметок с произвольным содержанием, доступных для любых мобильных и стационарных устройств.", name: "description"}/
     %meta{content: "Шпаргалка, электронная шпаргалка, шпора, шпаргалки бесплатно, онлайн шпаргалка, мобильная шпаргалка", name: "keywords"}/
     %meta{content: "width=device-width, initial-scale=1, maximum-scale=1", name: "viewport", "user-scalable" => "no"}/
-    %title 
+    %title
       = yield(:title)
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
@@ -23,11 +23,13 @@
         %section.vbox
           %header.header.bg-light.lter.b-b
             = render 'layouts/registration'
-            #search-box
-              .m-box
-                = fa_icon('search')
-              %form
-                %input{type: "search", placeholder:"Шукати"}
+            .search
+              = form_tag(posts_path, method: 'get') do
+                .col-sm-3
+                  = text_field_tag :search, params[:search], placeholder: 'Looking for a shpora', class: 'form-control'
+                .col-sm-1
+                  %button.btn.btn-info{type: 'submit', name: nil}
+                    = fa_icon('search')
           %section.resource.scrollable
             .container.padding-bottom
               = yield
@@ -48,10 +50,10 @@
                 "' alt='' title='LiveInternet: показано число посетителей за"+
                 " сегодня' "+
                 "border='0' width='88' height='15'><\/a>")
-  
 
 
-                    
+
+
   - else
     %section.vbox
       #top
@@ -80,4 +82,4 @@
             "' alt='' title='LiveInternet: показано число посетителей за"+
             " сегодня' "+
             "border='0' width='88' height='15'><\/a>")
-  
+

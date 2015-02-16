@@ -1,6 +1,5 @@
-%h2.align
+%h2.page-header
 	= @header
-
 .m-t-xl
 	.people
 		.row
@@ -10,14 +9,14 @@
 						.row
 							.col-xs-8.col-sm-offset-2
 								-if user.avatar.present?
-									= user.avatar
+									= image_tag user.avatar, class: 'foto img-sircle'
 								- else
 									%a{href: user_path(user)}
 										= image_tag 'unknow.gif', class: 'foto img-circle'
 						.row
 							.col-xs-12
 								%h2.align
-									%a{href: user_path(user)} 
+									%a{href: user_path(user)}
 										= user.username
 						.row
 							.col-xs-12

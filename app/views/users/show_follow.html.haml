@@ -1,5 +1,5 @@
 - provide(:title, @title)
-%h2.align
+%h2.page-header
 	= @header
 - if @users.any?
 	.m-t-xl
@@ -15,12 +15,12 @@
 							.row.align
 								.col-xs-12
 									%h2
-										%a{href: user_path(user)} 
+										%a{href: user_path(user)}
 											= user.username
 							.row.align.wrapper-sm
 								.col-xs-12
 									.btn-group.btn-group-justified
-										%a.btn.btn-primary{ href: following_user_path(user)} 
+										%a.btn.btn-primary{ href: following_user_path(user)}
 											following
 											.badge
 												= user.following.count
