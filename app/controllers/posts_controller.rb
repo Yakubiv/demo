@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :find_post, only: [:edit, :update, :destroy]
 
   def index
     if params[:search]
@@ -30,6 +30,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
   end
 

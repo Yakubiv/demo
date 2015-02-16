@@ -69,12 +69,12 @@
 			%h4 Користувач поки не додав шпаргалок.
 	.col-lg-3
 		%h3.page-header #{@user.username}
+		- if @user.avatar.present?
+			.form-group.align
+				= image_tag @user.avatar.big_thumb
 		= render 'follow_form'
 		.stats
 			= render 'shared/stats'
-		%h3.page-header Аватарка
-		.form-group.align
-			= image_tag @user.avatar.big_thumb
 		%h3.page-header Улюблені
 		- if @user.favorites.any?
 			.panel.wrapper
